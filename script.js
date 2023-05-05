@@ -54,6 +54,7 @@ function isElementInViewport(el) {
       (window.innerWidth || document.documentElementElement.clientWidth)
   );
 }
+
 function animateElement() {
   frise.style = "width:80%";
 
@@ -67,6 +68,7 @@ function animateElement() {
     thirdChild.classList.add("active-date");
   }, 800);
 }
+
 function handleScroll() {
   if (isElementInViewport(frise)) {
     animateElement();
@@ -75,4 +77,4 @@ function handleScroll() {
 }
 window.addEventListener("scroll", handleScroll());
 
-window.removeEventListener("scroll", handleScroll());
+// window.removeEventListener("scroll", handleScroll());
