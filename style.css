@@ -344,17 +344,6 @@ html {
 	position: relative;
 }
 
-@media screen and (max-width: 425px) {
-	.profile-image {
-		top: 10%;
-		left: 15%;
-	}
-	.presentation {
-		top: 18%;
-		left: 22%;
-	}
-}
-
 /*parcours section*/
 
 .parcours-section {
@@ -525,28 +514,29 @@ html {
 	font-size: clamp(1rem, 2vw, 1.6rem);
 }
 .projet:hover {
-		width: 20vw;
-		transition: width 0.5s ease;
+	width: 20vw;
+	transition: width 0.5s ease;
 }
 
 .contact-global-container {
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
+	background: red;
 }
 .contact-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 3vw;
+	padding: 10px;
 	flex-direction: column;
 }
 .contact {
 	padding: 1vw;
 	width: 100%;
-	border-radius: 20px;
+	border-radius: 10px;
 	border: 1px solid black;
 	font-size: clamp(1rem, 2vw, 1.6rem);
 }
@@ -562,13 +552,12 @@ html {
 .reseaux {
 	padding: 1vw;
 	width: 100%;
-	border-radius: 20px;
+	border-radius: 10px;
 	font-size: clamp(1rem, 2vw, 1.6rem);
 	border: 1px solid black;
 	margin: 1vw;
 }
 .cv-container {
-	margin: 3vw;
 	width: 40vw;
 }
 .cv {
@@ -581,8 +570,24 @@ html {
 	margin-top: 5vw;
 }
 .cv-img {
-	border-radius: 20px;
+	border-radius: 10px;
 	width: 80%;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 425px) {
+	.profile-image {
+		top: 10%;
+		left: 15%;
+	}
+	.presentation {
+		top: 18%;
+		left: 22%;
+	}
+	.contact-global-container {
+		flex-direction: column;
+	}
 }
 /** {
 	box-shadow: 0 0 0 3px red inset;
