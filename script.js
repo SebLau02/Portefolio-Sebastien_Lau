@@ -43,38 +43,34 @@ const thirdChild = frise.querySelector(":nth-child(3)");
 const paragrapheParcours = document.querySelector(".parcours-bot");
 const txtParcours = "Comme tu peux le constater, ceci est mon parcours.";
 
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <=
-      (window.innerWidth || document.documentElementElement.clientWidth)
-  );
-}
-
-function animateElement() {
-  frise.style = "width:80%";
-
-  setTimeout(() => {
-    firstChild.classList.add("active-date");
-  }, 300);
-  setTimeout(() => {
-    secondChild.classList.add("active-date");
-  }, 500);
-  setTimeout(() => {
-    thirdChild.classList.add("active-date");
-  }, 800);
-}
-
 function handleScroll() {
-  if (isElementInViewport(frise)) {
-    animateElement();
-    typeWriter(txtParcours, 0, paragrapheParcours);
+  const { scrollTop, clientHeight } = document.documentElement;
+
+  const topElementToTopViewport = frise.getBoundingClientRect().top;
+
+  if (
+    scrollTop >
+    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
+  ) {
+    frise.style = "width:80%";
+
+    setTimeout(() => {
+      firstChild.classList.add("active-date");
+    }, 300);
+
+    setTimeout(() => {
+      secondChild.classList.add("active-date");
+    }, 500);
+
+    setTimeout(() => {
+      thirdChild.classList.add("active-date");
+    }, 800);
+
+    setTimeout(() => {
+      typeWriter(txtParcours, 0, paragrapheParcours);
+    }, 500);
+    window.removeEventListener("scroll", handleScroll);
   }
 }
-window.addEventListener("scroll", handleScroll());
 
-// window.removeEventListener("scroll", handleScroll());
+window.addEventListener("scroll", handleScroll);
