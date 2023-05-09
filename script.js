@@ -15,7 +15,8 @@ function typeWriter(word, index, element) {
   }
 }
 
-//////effet machine à écrire sur l'acceuil////////
+//////acceuil section////////
+
 const part1 = document.querySelector(".part-1");
 const part2 = document.querySelector(".part-2");
 const part3 = document.querySelector(".part-3");
@@ -31,13 +32,13 @@ const txtPart3 =
 
 setTimeout(() => {
   typeWriter(txtPart1, 0, part1);
-}, "100");
+}, "1300");
 setTimeout(() => {
   typeWriter(txtPart2, 0, part2);
-}, "1200");
+}, "2500");
 setTimeout(() => {
   typeWriter(txtPart3, 0, part3);
-}, "4000");
+}, "5300");
 
 ///////parcours animation/////////////
 
@@ -47,7 +48,7 @@ const secondChild = frise.querySelector(":nth-child(2)");
 const thirdChild = frise.querySelector(":nth-child(3)");
 
 const paragrapheParcours = document.querySelector(".parcours-bot");
-const txtParcours = "Cette partie recense mon parcours";
+const txtParcours = "Cette partie recense mon parcours.";
 const { scrollTop, clientHeight } = document.documentElement;
 
 function parcoursHandleScroll() {
@@ -72,6 +73,9 @@ function parcoursHandleScroll() {
     }, 800);
 
     typeWriter(txtParcours, 0, paragrapheParcours);
+
+    retourBtn.classList.add("opacity");
+    retourBtn.classList.add("transform");
 
     globalSectionsContainer.removeEventListener("scroll", parcoursHandleScroll);
   }
@@ -135,6 +139,29 @@ function contactHandleScroll() {
 
 globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
 
+///////////////techno annimation section///////////////////////
+
+const technosContainer = document.querySelector(".technos-container");
+const technosBot = document.querySelector(".technos-bot");
+
+const technosText =
+  "Voici les différentes technos que je suis capable d'utiliser.";
+
+function technosHandleScroll() {
+  const topElementToTopViewport = technosContainer.getBoundingClientRect().top;
+
+  if (
+    scrollTop >
+    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
+  ) {
+    typeWriter(technosText, 0, technosBot);
+
+    globalSectionsContainer.removeEventListener("scroll", technosHandleScroll);
+  }
+}
+
+globalSectionsContainer.addEventListener("scroll", technosHandleScroll);
+
 // retour section////////////
 
 const retourBtn = document.querySelector(".retour");
@@ -146,3 +173,12 @@ retourBtn.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+/////////////////appear section///////////////
+const imageProfile = document.querySelector(".profile-image");
+const presentationBot = document.querySelector(".presentation-bot");
+
+setTimeout(() => {
+  imageProfile.classList.add("opacity");
+  presentationBot.classList.add("opacity");
+}, 800);
