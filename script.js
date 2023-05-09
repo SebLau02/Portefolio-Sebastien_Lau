@@ -1,3 +1,9 @@
+//////queryselectors/////////
+
+const globalSectionsContainer = document.querySelector(
+  ".global-sections-container"
+);
+
 ////typeWriter function////////
 
 function typeWriter(word, index, element) {
@@ -28,10 +34,10 @@ setTimeout(() => {
 }, "100");
 setTimeout(() => {
   typeWriter(txtPart2, 0, part2);
-}, "2000");
+}, "1200");
 setTimeout(() => {
   typeWriter(txtPart3, 0, part3);
-}, "6000");
+}, "4000");
 
 ///////parcours animation/////////////
 
@@ -41,11 +47,10 @@ const secondChild = frise.querySelector(":nth-child(2)");
 const thirdChild = frise.querySelector(":nth-child(3)");
 
 const paragrapheParcours = document.querySelector(".parcours-bot");
-const txtParcours = "Comme tu peux le constater, ceci est mon parcours.";
+const txtParcours = "Cette partie recense mon parcours";
+const { scrollTop, clientHeight } = document.documentElement;
 
-function handleScroll() {
-  const { scrollTop, clientHeight } = document.documentElement;
-
+function parcoursHandleScroll() {
   const topElementToTopViewport = frise.getBoundingClientRect().top;
 
   if (
@@ -66,11 +71,78 @@ function handleScroll() {
       thirdChild.classList.add("active-date");
     }, 800);
 
-    setTimeout(() => {
-      typeWriter(txtParcours, 0, paragrapheParcours);
-    }, 500);
-    window.removeEventListener("scroll", handleScroll);
+    typeWriter(txtParcours, 0, paragrapheParcours);
+
+    globalSectionsContainer.removeEventListener("scroll", parcoursHandleScroll);
   }
 }
 
-window.addEventListener("scroll", handleScroll);
+globalSectionsContainer.addEventListener("scroll", parcoursHandleScroll);
+
+// // /////////////projet section animation/////////////
+
+const projetContainer = document.querySelector(".projet-container");
+
+const projetBot = document.querySelector(".projet-bot");
+const projetTextePart1 =
+  "Dans cette partie tu peux visionner mes différents projets, ";
+const projetTextePart2 = "n'hésites pas à cliquer dessus.";
+
+function projetHandleScroll() {
+  const topElementToTopViewport = projetContainer.getBoundingClientRect().top;
+
+  if (
+    scrollTop >
+    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
+  ) {
+    typeWriter(projetTextePart1, 0, projetBot);
+
+    setTimeout(() => {
+      typeWriter(projetTextePart2, 0, projetBot);
+    }, 2300);
+
+    globalSectionsContainer.removeEventListener("scroll", projetHandleScroll);
+  }
+}
+
+globalSectionsContainer.addEventListener("scroll", projetHandleScroll);
+
+// // ///////////contact section animation///////////////
+
+const contactContainer = document.querySelector(".contact-container");
+const contactBot = document.querySelector(".contact-bot");
+
+const contactTextePart1 = "Si tu veux me contacter, ";
+const contactTextePart2 =
+  "tu trouveras tout ce qu'il faut dans cette section !";
+
+function contactHandleScroll() {
+  const topElementToTopViewport = contactContainer.getBoundingClientRect().top;
+
+  if (
+    scrollTop >
+    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.5
+  ) {
+    typeWriter(contactTextePart1, 0, contactBot);
+
+    setTimeout(() => {
+      typeWriter(contactTextePart2, 0, contactBot);
+    }, 1800);
+
+    globalSectionsContainer.removeEventListener("scroll", contactHandleScroll);
+  }
+}
+
+globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
+
+// retour section////////////
+
+const retourBtn = document.querySelector(".retour");
+
+retourBtn.addEventListener("click", () => {
+  globalSectionsContainer.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
