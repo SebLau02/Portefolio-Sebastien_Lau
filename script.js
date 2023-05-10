@@ -141,11 +141,11 @@ globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
 
 ///////////////techno annimation section///////////////////////
 
-const technosContainer = document.querySelector(".technos-container");
+const technosContainer = document.querySelector(".techno-image-container");
 const technosBot = document.querySelector(".technos-bot");
 
 const technosText =
-  "Voici les différentes technos que je suis capable d'utiliser.";
+  "Voici les différentes technos que j'utilise.";
 
 function technosHandleScroll() {
   const topElementToTopViewport = technosContainer.getBoundingClientRect().top;
