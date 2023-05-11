@@ -438,9 +438,6 @@ article::before {
 	transform: translateX(100%);
 	background: none;
 }
-.fleche:hover {
-	cursor: pointer;
-}
 .date {
 	position: absolute;
 	display: block;
@@ -452,6 +449,7 @@ article::before {
 	opacity: 0;
 	background: #d25347;
 	transition: opacity 0.5s ease;
+	box-shadow: inset -5px 5px 10px #b3473c, inset 5px -5px 10px #f25f52;
 }
 .timeline :nth-child(1) {
 	left: 15%;
