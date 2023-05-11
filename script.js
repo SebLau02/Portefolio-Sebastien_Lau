@@ -48,7 +48,7 @@ const secondChild = frise.querySelector(":nth-child(2)");
 const thirdChild = frise.querySelector(":nth-child(3)");
 
 const paragrapheParcours = document.querySelector(".parcours-bot");
-const txtParcours = "Cette partie recense mon parcours.";
+const txtParcours = "Tu peux retrouver tout mon parcours dans cette partie.";
 const { scrollTop, clientHeight } = document.documentElement;
 
 function parcoursHandleScroll() {
@@ -116,7 +116,7 @@ globalSectionsContainer.addEventListener("scroll", projetHandleScroll);
 const contactContainer = document.querySelector(".contact-container");
 const contactBot = document.querySelector(".contact-bot");
 
-const contactTextePart1 = "Si tu veux me contacter, ";
+const contactTextePart1 = "Et si tu veux me contacter, ";
 const contactTextePart2 =
   "tu trouveras tout ce qu'il faut dans cette section !";
 
@@ -144,8 +144,7 @@ globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
 const technosContainer = document.querySelector(".techno-image-container");
 const technosBot = document.querySelector(".technos-bot");
 
-const technosText =
-  "Voici les différentes technos que j'utilise.";
+const technosText = "Voici les différentes technos que j'utilise.";
 
 function technosHandleScroll() {
   const topElementToTopViewport = technosContainer.getBoundingClientRect().top;

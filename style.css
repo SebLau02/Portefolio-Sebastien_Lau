@@ -563,6 +563,7 @@ article::before {
 	text-align: center;
 	bottom: -5vmax;
 	font-size: clamp(1rem, 2vw, 1.6rem);
+	font-weight: 700;
 }
 .projet-container :nth-child(2):after {
 	content: "Cocal-cola Animation";
@@ -572,6 +573,7 @@ article::before {
 	text-align: center;
 	bottom: -5vmax;
 	font-size: clamp(1rem, 2vw, 1.6rem);
+	font-weight: 700;
 }
 .projet-container :nth-child(3):after {
 	content: "Memory";
@@ -581,6 +583,7 @@ article::before {
 	text-align: center;
 	bottom: -5vmax;
 	font-size: clamp(1rem, 2vw, 1.6rem);
+	font-weight: 700;
 }
 .projet:hover {
 	width: 20vmax;
@@ -618,7 +621,7 @@ article::before {
 	justify-content: center;
 	flex-direction: column;
 	position: relative;
-	margin-top: 10vh;
+	margin-top: 15vh;
 }
 .techno-name {
 	position: absolute;
@@ -717,7 +720,7 @@ article::before {
 		left: 15%;
 	}
 	.bot-texte {
-		top: 16%;
+		top: 18%;
 		left: 22%;
 	}
 	.contact-section {
@@ -725,26 +728,28 @@ article::before {
 		padding-top: 80vmin;
 	}
 	.projet-container {
+		margin-top: 28vh;
 		flex-direction: column;
-	}
-	.projet {
-		height: 80%;
-		width: 80%;
-		margin-top: 5vmin;
 	}
 }
 @media screen and (max-width: 768px) {
 	.projet-container {
 		flex-wrap: wrap;
-		margin-top: 30vh;
 	}
 	.projet {
 		height: 15vmax;
-		margin: 8vmin;
+		margin-top: 10vmin;
+		width: 25vmax;
 	}
 	.projet:hover {
 		width: 25vmax;
 	}
+	.techno-name {
+		top: 130%;
+	}
+	/*	.techno-image-container {
+		margin-top: 15vh;
+	}*/
 }
 /** {
 	box-shadow: 0 0 0 3px red inset;
