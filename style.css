@@ -544,7 +544,7 @@ article::before {
 	font-size: clamp(0.8rem, 2vw, 1.2rem);
 }
 .projet {
-	width: 10vmax;
+	width: 0;
 	height: 20vmax;
 	border-radius: 10px;
 	margin: 1vw;
@@ -552,6 +552,7 @@ article::before {
 	border: 1px solid #a84c7a;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
 		rgba(0, 0, 0, 0.22) 0px 10px 10px;
+	transition: width 1s ease;
 }
 .projet-container :nth-child(1):after {
 	content: "Pokedex";
@@ -593,6 +594,9 @@ article::before {
 	height: 100%;
 	border-radius: 10px;
 	object-fit: cover;
+}
+.active-project {
+	width: 10vmax;
 }
 /*technos section*/
 
@@ -710,7 +714,7 @@ article::before {
 	transform: translateY(0);
 }
 
-/*media queries*/
+/*****************media queries*****************/
 
 @media screen and (max-width: 425px) {
 	.profile-image {
@@ -737,9 +741,13 @@ article::before {
 	.projet {
 		height: 15vmax;
 		margin-top: 10vmin;
-		width: 25vmax;
+		width: 0;
+		transition: width 1s ease;
 	}
 	.projet:hover {
+		width: 25vmax;
+	}
+	.active-project {
 		width: 25vmax;
 	}
 	.techno-name {

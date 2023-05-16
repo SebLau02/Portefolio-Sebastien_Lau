@@ -86,6 +86,7 @@ globalSectionsContainer.addEventListener("scroll", parcoursHandleScroll);
 // // /////////////projet section animation/////////////
 
 const projetContainer = document.querySelector(".projet-container");
+const projet = document.querySelectorAll(".projet");
 
 const projetBot = document.querySelector(".projet-bot");
 const projetTextePart1 =
@@ -104,6 +105,17 @@ function projetHandleScroll() {
     setTimeout(() => {
       typeWriter(projetTextePart2, 0, projetBot);
     }, 2300);
+
+    for (let i = 0; i < projet.length; i++) {
+      projet.forEach((el) => {
+        setTimeout(() => {
+          el.classList.add("active-project");
+        }, 3400);
+      });
+    }
+    setTimeout(() => {
+      projetContainer.classList.add("active-project-container");
+    },3600);
 
     globalSectionsContainer.removeEventListener("scroll", projetHandleScroll);
   }
