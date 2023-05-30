@@ -342,6 +342,7 @@ article {
 	position: relative;
 	scroll-snap-align: center;
 	min-height: 100vh;
+	max-width: 100vw;
 }
 article::before {
 	content: "";
@@ -516,6 +517,7 @@ article::before {
 	border-radius: 0 20px 20px 20px;
 	padding: 10px;
 	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+	z-index: 10;
 }
 
 .active-date {
@@ -542,51 +544,37 @@ article::before {
 .mes-projets-plus {
 	margin-top: 5vmax;
 	font-size: clamp(0.8rem, 2vw, 1.2rem);
+	transform: translateY(-2vmax);
+	opacity: 0;
+	transition: opacity 1s 0.2s ease, transform 1s 0.2s ease;
 }
 .projet {
 	width: 0;
-	height: 20vmax;
+	height: 0;
 	border-radius: 10px;
 	margin: 1vw;
 	position: relative;
 	border: 1px solid #a84c7a;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
 		rgba(0, 0, 0, 0.22) 0px 10px 10px;
-	transition: width 1s ease;
+	transition: width 1s 0.5s ease, height 0.7s ease;
 }
-.projet-container :nth-child(1):after {
-	content: "Pokedex";
+.projet-nom {
 	position: absolute;
-	display: block;
+	z-index: -1;
 	width: 100%;
 	text-align: center;
+	left: 0;
 	bottom: -5vmax;
 	font-size: clamp(1rem, 2vw, 1.6rem);
 	font-weight: 700;
-}
-.projet-container :nth-child(2):after {
-	content: "Cocal-cola Animation";
-	position: absolute;
-	display: block;
-	width: 100%;
-	text-align: center;
-	bottom: -5vmax;
-	font-size: clamp(1rem, 2vw, 1.6rem);
-	font-weight: 700;
-}
-.projet-container :nth-child(3):after {
-	content: "Memory";
-	position: absolute;
-	display: block;
-	width: 100%;
-	text-align: center;
-	bottom: -5vmax;
-	font-size: clamp(1rem, 2vw, 1.6rem);
-	font-weight: 700;
+	transform: translateY(-2vmax);
+	opacity: 0;
+	transition: opacity 1s ease, transform 1s ease;
 }
 .projet:hover {
 	width: 20vmax;
-	transition: width 0.5s ease 0.1s;
+	transition: width 0.2s ease 0.1s;
 }
 
 .projet-img {
@@ -595,26 +583,37 @@ article::before {
 	border-radius: 10px;
 	object-fit: cover;
 }
+.active-projet-plus {
+	transform: translateY(0);
+	opacity: 1;
+}
 .active-project {
 	width: 10vmax;
 }
 /*technos section*/
 
-.technos-section {
+.techno-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	width: 100%;
+	padding-top: 30vmin;
+	height: auto;
 }
 
 .technos {
 	height: 7vmax;
-	margin: 0 5vw 0 5vw;
+	margin: 0 2.5vw 0 2.5vw;
 }
-
-.technos:hover {
+.techno-image-container:hover .technos {
 	filter: blur(3px);
 	z-index: -2;
+	cursor: pointer;
+}
+.techno-image-container:hover .techno-name {
+	cursor: pointer;
+	opacity: 1;
 }
 .techno-image-container {
 	height: auto;
@@ -624,6 +623,8 @@ article::before {
 	flex-direction: column;
 	position: relative;
 	margin-top: 15vh;
+	transform: translateY(-3vmax);
+	opacity: 0;
 }
 .techno-name {
 	position: absolute;
@@ -634,6 +635,11 @@ article::before {
 	font-size: clamp(1.2rem, 2vw, 1.6rem);
 	font-weight: 800;
 	text-shadow: 1px 1px 10px black;
+	opacity: 0;
+}
+.active-techno {
+	transform: translateY(0);
+	opacity: 1;
 }
 /*contact section*/
 
@@ -739,10 +745,10 @@ article::before {
 		flex-wrap: wrap;
 	}
 	.projet {
-		height: 15vmax;
+		height: 0;
 		margin-top: 10vmin;
 		width: 0;
-		transition: width 1s ease;
+		transition: width 1s 0.5s ease, height 0.7s ease;
 	}
 	.projet:hover {
 		width: 25vmax;
@@ -751,11 +757,9 @@ article::before {
 		width: 25vmax;
 	}
 	.techno-name {
+		opacity: 1;
 		top: 130%;
 	}
-	/*	.techno-image-container {
-		margin-top: 15vh;
-	}*/
 }
 /** {
 	box-shadow: 0 0 0 3px red inset;

@@ -87,6 +87,8 @@ globalSectionsContainer.addEventListener("scroll", parcoursHandleScroll);
 
 const projetContainer = document.querySelector(".projet-container");
 const projet = document.querySelectorAll(".projet");
+const projetNom = document.querySelectorAll(".projet-nom");
+const gitHub = document.querySelector(".mes-projets-plus");
 
 const projetBot = document.querySelector(".projet-bot");
 const projetTextePart1 =
@@ -109,13 +111,18 @@ function projetHandleScroll() {
     for (let i = 0; i < projet.length; i++) {
       projet.forEach((el) => {
         setTimeout(() => {
+          el.style = "height: 15vmax;";
           el.classList.add("active-project");
-        }, 3400);
+        }, 500);
+      });
+
+      projetNom.forEach((el) => {
+        setTimeout(() => {
+          el.classList.add("active-projet-plus");
+          gitHub.classList.add("active-projet-plus");
+        }, 1500);
       });
     }
-    setTimeout(() => {
-      projetContainer.classList.add("active-project-container");
-    },3600);
 
     globalSectionsContainer.removeEventListener("scroll", projetHandleScroll);
   }
@@ -153,10 +160,12 @@ globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
 
 ///////////////techno annimation section///////////////////////
 
-const technosContainer = document.querySelector(".techno-image-container");
+const technosContainer = document.querySelector(".techno-container");
 const technosBot = document.querySelector(".technos-bot");
-
 const technosText = "Voici les différentes technos que j'utilise.";
+const technosImgNameContainer = document.querySelectorAll(
+  ".techno-image-container"
+);
 
 function technosHandleScroll() {
   const topElementToTopViewport = technosContainer.getBoundingClientRect().top;
@@ -168,6 +177,16 @@ function technosHandleScroll() {
     typeWriter(technosText, 0, technosBot);
 
     globalSectionsContainer.removeEventListener("scroll", technosHandleScroll);
+
+    // for (let i = 0; i < technosImgNameContainer.length; i++) {
+    technosImgNameContainer.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add("active-techno");
+        el.style.transition = `transform 0.7s ease-in-out ${
+          i * 0.2
+        }s, opacity 0.7s ease-in-out ${i * 0.2}s`;
+      }, 500);
+    });
   }
 }
 
@@ -186,6 +205,7 @@ retourBtn.addEventListener("click", () => {
 });
 
 /////////////////appear section///////////////
+
 const imageProfile = document.querySelector(".profile-image");
 const presentationBot = document.querySelector(".presentation-bot");
 
