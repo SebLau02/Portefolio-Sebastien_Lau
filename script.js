@@ -162,7 +162,7 @@ globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
 
 const technosContainer = document.querySelector(".techno-container");
 const technosBot = document.querySelector(".technos-bot");
-const technosText = "Voici les différentes technos que j'utilise.";
+const technosText = "Voici les différents outils et technos que j'utilise";
 const technosImgNameContainer = document.querySelectorAll(
   ".techno-image-container"
 );
@@ -192,7 +192,7 @@ function technosHandleScroll() {
 
 globalSectionsContainer.addEventListener("scroll", technosHandleScroll);
 
-// retour section////////////
+//********** return at top function **********
 
 const retourBtn = document.querySelector(".retour");
 

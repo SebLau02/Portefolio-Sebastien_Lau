@@ -720,7 +720,7 @@ article::before {
 	transform: translateY(0);
 }
 
-/*****************media queries*****************/
+/*****************-- media queries --*****************/
 
 @media screen and (max-width: 425px) {
 	.profile-image {
@@ -761,6 +761,3 @@ article::before {
 		top: 130%;
 	}
 }
-/** {
-	box-shadow: 0 0 0 3px red inset;
-}*/
