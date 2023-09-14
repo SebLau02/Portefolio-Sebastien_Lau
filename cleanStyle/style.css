@@ -357,21 +357,35 @@ article > h2::after {
 	position: absolute;
 	top: 0;
 	left: 50%;
-	transform: translateX(-50%) skew(5deg, 10deg);
+	/*	transform: translateX(-50%) skew(5deg, 10deg);*/
 	z-index: -1;
 	color: #c9c3b1;
 	opacity: 0.5;
 	width: 90vw;
 	font-size: clamp(4rem, 6vw, 8rem);
 }
+
+.parcours-global-container > h2 {
+	transform: skew(0deg, -2deg);
+}
+.projets-section > h2 {
+	transform: skew(0deg, 2deg);
+}
+.technos-global-container > h2 {
+	transform: skew(0deg, -2deg);
+}
+
 .parcours-global-container > h2:after {
 	content: "Parcours";
+	transform: translateX(-50%) skew(5deg, 10deg);
 }
 .projets-section > h2:after {
 	content: "Travaux";
+	transform: translateX(-50%) skew(5deg, -10deg);
 }
 .technos-global-container > h2:after {
 	content: "Technologies";
+	transform: translateX(-50%) skew(5deg, 10deg);
 }
 
 .parcours-global-container h2 span,
@@ -509,18 +523,19 @@ fith:#0f0c0c
 	width: 40%;
 }
 .presentation-container h1 {
-	line-height: 5rem;
+	line-height: 2vh;
 	color: #d25347;
 	opacity: 0;
 	animation: apparition 1s 0.1s ease-out forwards;
 }
 .presentation-container h3 {
 	margin-left: 1vw;
-	line-height: 3rem;
+	line-height: 5vh;
 	opacity: 0;
 	animation: apparition 1s 0.3s ease-out forwards;
 }
 .presentation-container p {
+	line-height: 2.5vh;
 	opacity: 0;
 	animation: apparition 1s 0.4s ease-out forwards;
 }
@@ -554,7 +569,7 @@ fith:#0f0c0c
 	color: #0f0c0c;
 	text-decoration: none;
 	padding: 1vw;
-	border-radius: 0.8vw;
+	border-radius: 1vw;
 	line-height: 10rem;
 	box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
