@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="style.css" />
+		<!-- <link rel="stylesheet" href="rawStyle/style.css" /> -->
+		<link rel="stylesheet" href="cleanStyle/style.css" />
 
-		<title>Lau Sébastien</title>
+		<title>Lau Sébastien - Portfolio</title>
 	</head>
 	<body>
 		<div class="background">
@@ -41,216 +42,110 @@
 			<span></span>
 		</div>
 
-		<div class="global-sections-container">
-			<button class="retour">
-				<img
-					src="assets/svg/topArrow.svg"
-					alt="bouton retour vers le haut de la page"
-					class="fleche-retour"
-				/>
-			</button>
+		<button class="burger-menu">
+			<div class="ligne-container">
+				<span class="ligne"></span>
+				<span class="ligne"></span>
+				<span class="ligne"></span>
+			</div>
+		</button>
 
-			<article class="profile-section">
+		<nav class="navigation-menu">
+			<a href="#home">Accueil</a>
+			<a href="#parcours">Parcours</a>
+			<a href="#projects">Travaux</a>
+			<a href="#tech">Outils</a>
+			<a href="#contact">Contact</a>
+		</nav>
+
+		<div class="global-sections-container">
+			<article class="profile-global-container" id="home">
+				<div class="presentation-container">
+					<h1>Salut, moi c'est Sébastien.</h1>
+					<h3>Apprenti développeur web.</h3>
+
+					<p>
+						Passionné de développement web, ce qui me plaît le plus
+						dans ce milieu reste la création et de voir l'évolution
+						du projet jusqu'à la mise en ligne. Ce qui me motive
+						tous les jours à coder c'est aussi l'unicité de chaque
+						projet en effet cela permet de ne jamais s'ennuyer et
+						d'être toujours confronté à de nouveau défis. C'est
+						pourquoi si tu as besoin d'aide pour ton prochain
+						projet, n'hésite pas à me contacter, je serais ravi de
+						travailler avec toi !
+					</p>
+
+					<a href="#view-project" class="view-project"
+						>Voir mes travaux</a
+					>
+				</div>
+
 				<div class="profile-image-container">
+					<div class="deco-form"></div>
 					<img
-						src="assets/profile/Sebastien_mini.jpg"
+						src="assets/profile/Sebastien-removed.png"
 						alt="photo de sebastien"
 						class="profile-image"
 					/>
 				</div>
-				<div class="presentation-section">
-					<div class="bot-texte presentation-bot">
-						<p class="part-1"></p>
-						<p class="part-2"></p>
-						<p class="part-3"></p>
-					</div>
-				</div>
 			</article>
 
-			<article class="parcours-section">
-				<p class="bot-texte parcours-bot"></p>
+			<article class="parcours-global-container" id="parcours">
+				<h2>
+					Parcours <span>scolaire </span> et <span>professionel</span>
+				</h2>
 
-				<div class="timeline">
-					<span class="date"></span>
-					<span class="date"></span>
-					<span class="date"></span>
-					<img
-						src="assets/svg/pointe.svg"
-						alt="pointe de la frise chronologique"
-						class="fleche"
-					/>
-				</div>
-			</article>
+				<section class="scholar-work">
+					<div class="scholar">
+						<h3>Parcours scolaire</h3>
 
-			<article class="projets-section">
-				<p class="bot-texte projet-bot"></p>
-
-				<img src="assets/profile/bureau.png" class="background-image" />
-
-				<div class="projet-container">
-					<a
-						href="https://seblau02.github.io/Pokedex-React/"
-						class="projet"
-					>
-						<img
-							src="assets/projets/pokedex.png"
-							alt="image lien vers projet pokedex"
-							class="projet-img"
-						/>
-						<span class="projet-nom">Pokedex</span>
-					</a>
-
-					<a
-						href="https://seblau02.github.io/Cocacola-Animation/"
-						class="projet"
-					>
-						<img
-							src="assets/projets/cocacola_animation.png"
-							alt="image lien vers projet une animation de cocacola"
-							class="projet-img"
-						/>
-						<span class="projet-nom">Coca-Cola Animation</span>
-					</a>
-
-					<a
-						href="https://seblau02.github.io/l-ardillon-shop"
-						class="projet"
-					>
-						<img
-							src="assets/projets/lardillonshop.png"
-							alt="image lien vers projet shop en ligne"
-							class="projet-img"
-						/>
-						<span class="projet-nom">E-commerce</span>
-					</a>
-				</div>
-
-				<p class="mes-projets-plus">
-					Et d'autres sur mon
-					<a href="https://github.com/SebLau02">GitHub</a>
-				</p>
-			</article>
-
-			<article class="technos-section">
-				<p class="bot-texte technos-bot"></p>
-
-				<img
-					src="assets/profile/html-bgd.png"
-					class="background-image"
-				/>
-
-				<div class="techno-container">
-					<div class="techno-image-container">
-						<span class="techno-name">HTML</span>
-						<img
-							src="assets/technos/html.png"
-							alt="html"
-							class="technos"
-						/>
+						<ul class="scholar-list">
+							<li class="lycee">
+								<ul>
+									<li>
+										<ul>
+											<li>Bac Scientifique</li>
+											<li>Spé ISN</li>
+											<li>Guyane Française</li>
+										</ul>
+									</li>
+									<li class="validate-year">2018</li>
+								</ul>
+							</li>
+							<li class="universite">
+								<ul>
+									<li>
+										<ul>
+											<li>Licence STAPS, option APAS</li>
+											<li>Université d'artois, Liévin</li>
+										</ul>
+									</li>
+									<li class="validate-year">2018-2021</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 
-					<div class="techno-image-container">
-						<span class="techno-name">CSS</span>
-						<img
-							src="assets/technos/css.png"
-							alt="css"
-							class="technos"
-						/>
-					</div>
-					<div class="techno-image-container">
-						<span class="techno-name">Tailwindcss</span>
-						<img
-							src="assets/technos/tailwind.png"
-							alt="tailwindcsss"
-							class="technos"
-						/>
-					</div>
+					<div class="work">
+						<h3>Parcours professionnel</h3>
 
-					<div class="techno-image-container">
-						<span class="techno-name">JavaScripts</span>
-						<img
-							src="assets/technos/js.png"
-							alt="JavaScripts"
-							class="technos"
-						/>
-					</div>
-
-					<div class="techno-image-container">
-						<span class="techno-name">ReactJS</span>
-						<img
-							src="assets/technos/reactjs.png"
-							alt="react"
-							class="technos"
-						/>
-					</div>
-
-					<div class="techno-image-container">
-						<span class="techno-name">Gsap</span>
-						<img
-							src="assets/technos/gsap.svg"
-							alt="gsap"
-							class="technos"
-						/>
-					</div>
-
-					<div class="techno-image-container">
-						<span class="techno-name">Git</span>
-						<img
-							src="assets/technos/git.png"
-							alt="git"
-							class="technos"
-						/>
-					</div>
-
-					<div class="techno-image-container">
-						<span class="techno-name">GitHub</span>
-						<img
-							src="assets/technos/github.png"
-							alt="github"
-							class="technos"
-						/>
-					</div>
-					<div class="techno-image-container">
-						<span class="techno-name">NodeJs + Express</span>
-						<img
-							src="assets/technos/nodejs.png"
-							alt=" node / express"
-							class="technos"
-						/>
-					</div>
-					<div class="techno-image-container">
-						<span class="techno-name">MongoDB</span>
-						<img
-							src="assets/technos/mongodb.png"
-							alt="mongodb"
-							class="technos"
-						/>
-					</div>
-					<div class="techno-image-container">
-						<span class="techno-name">Figma</span>
-						<img
-							src="assets/technos/figma.png"
-							alt="figma"
-							class="technos"
-						/>
-					</div>
-				</div>
-			</article>
-
-			<article class="contact-section">
-				<p class="bot-texte contact-bot"></p>
-
-				<section class="contact-container">
-					<div class="contact">
-						<h3>Je suis joignable :</h3>
-						<p>📧 sebastien.lau2021@gmail.com</p>
-						<p>📪 24 rue des charmes, Agny, 62217</p>
-						<p>☎ +33 6 03 70 93 77</p>
-					</div>
-
-					<div class="reseaux">
-						<h3>Je suis aussi sur :</h3>
-						<p><a href="https://github.com/SebLau02">GitHub</a></p>
+						<ul class="work-list">
+							<li class="hapik">
+								<ul>
+									<li>
+										<ul>
+											<li>Hapik</li>
+											<li>Equipier polyvalent</li>
+											<li>
+												Cours d'escalade pour enfant
+											</li>
+										</ul>
+									</li>
+									<li class="validate-year">2022</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 
@@ -264,10 +159,216 @@
 						href="assets/cv/CV_LAU_Sébastien.pdf"
 						download="CV_LAU_Sébastien.pdf"
 						class="download"
-						>Télécharge mon CV</a
+						>Télécharger</a
 					>
 				</section>
 			</article>
+
+			<article class="projets-section" id="projects">
+				<h2 id="view-project">Mes <span>travaux</span></h2>
+
+				<div class="projet-container">
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+
+					<div class="project">
+						<a href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+				</div>
+			</article>
+
+			<article class="technos-global-container" id="tech">
+				<h2>Technologies</h2>
+
+				<section class="technos-parts front-end">
+					<h3>Front-End</h3>
+
+					<div class="html-container tech-logo-container">
+						<img
+							src="assets/technos/html.png"
+							alt="logo html"
+							class="html-logo logos"
+						/>
+						<h5 class="tech-name">HTML</h5>
+					</div>
+
+					<div class="tech-framework-container">
+						<div class="css-container tech-logo-container">
+							<img
+								src="assets/technos/css.png"
+								alt="logo css"
+								class="css-logo logos"
+							/>
+							<h5 class="tech-name">CSS</h5>
+						</div>
+
+						<div class="tailwind-container tech-logo-container">
+							<h5>Framework</h5>
+							<img
+								src="assets/technos/tailwind.png"
+								alt="logo tailwind"
+								class="tailwind-logo logos"
+							/>
+							<h5 class="tech-name">Tailwindcss</h5>
+						</div>
+					</div>
+
+					<div class="tech-framework-container">
+						<div class="javascript-container tech-logo-container">
+							<img
+								src="assets/technos/js.png"
+								alt="logo javascript"
+								class="javascript-logo logos"
+							/>
+							<h5 class="tech-name">JavaScript</h5>
+						</div>
+
+						<div class="react-container tech-logo-container">
+							<h5>Librairies</h5>
+							<img
+								src="assets/technos/react.png"
+								alt="logo react"
+								class="react-logo logos"
+							/>
+							<h5 class="tech-name">React Js</h5>
+						</div>
+						<div class="gsap-container tech-logo-container">
+							<img
+								src="assets/technos/gsap.svg"
+								alt="logo gsap"
+								class="gsap-logo logos"
+							/>
+							<h5 class="tech-name">GreenSock</h5>
+						</div>
+					</div>
+				</section>
+
+				<section class="technos-parts backend">
+					<h3>Back-end</h3>
+
+					<div class="node-js-container tech-logo-container">
+						<h5>Language serveur</h5>
+
+						<img
+							src="assets/technos/nodejs.png"
+							alt="logo node js"
+							class="nodejs-logo logos"
+						/>
+						<h5 class="tech-name">Node Js</h5>
+					</div>
+
+					<div class="mongodb-container tech-logo-container">
+						<h5>Base de données</h5>
+						<img
+							src="assets/technos/mongo.png"
+							alt="logo mongodb"
+							class="mongo-logo logos"
+						/>
+						<h5 class="tech-name">Mongodb</h5>
+					</div>
+				</section>
+				<section class="technos-parts outils">
+					<h3>Outils de développement</h3>
+
+					<div class="versionning-tools-container">
+						<div class="git-container tech-logo-container">
+							<h5>Gestionaire de version</h5>
+
+							<img
+								src="assets/technos/git.png"
+								alt="git logo"
+								class="git-logo logos"
+							/>
+
+							<h5 class="tech-name">Git</h5>
+						</div>
+
+						<div class="github-container tech-logo-container">
+							<img
+								src="assets/technos/github.png"
+								alt="github logo"
+								class="github-logo logos"
+							/>
+
+							<h5 class="tech-name">Github</h5>
+						</div>
+					</div>
+
+					<div class="ide-container tech-logo-container">
+						<h5>Editeur de texte</h5>
+
+						<img
+							src="assets/technos/sublime.png"
+							alt="sublime text logo"
+							class="sublime-logo logos"
+						/>
+
+						<h5 class="tech-name">Sublime-Text</h5>
+					</div>
+
+					<div class="figma-container tech-logo-container">
+						<h5>Maquettage</h5>
+
+						<img
+							src="assets/technos/figma.png"
+							alt="figma logo"
+							class="figma-logo logos"
+						/>
+
+						<h5 class="tech-name">Figma</h5>
+					</div>
+				</section>
+			</article>
+
+			<footer class="footer-global-container" id="contact">
+				<section class="contact-container">
+					<h4>Contact</h4>
+					<div class="contact">
+						<p>📧 sebastien.lau2021@gmail.com</p>
+						<p>📪 24 rue des charmes, Agny, 62217</p>
+					</div>
+				</section>
+
+				<section class="reseaux">
+					<a href="https://github.com/SebLau02" class="github-link">
+						<img
+							src="assets/technos/github.png"
+							alt="logo github"
+							class="github-link-logo"
+					/></a>
+				</section>
+
+				<h4 class="author">© Sébastien LAU 2023</h4>
+			</footer>
 		</div>
 
 		<script src="script.js"></script>

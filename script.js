@@ -1,215 +1,234 @@
-//////queryselectors/////////
+const parcourContainer = document.querySelector(".parcours-global-container");
+const scholar = document.querySelector(".scholar-work");
+const scholarList = document.querySelector(".scholar-list");
+const workList = document.querySelector(".work-list");
+const cv = document.querySelector(".cv-container");
+const techLogoContainer = document.querySelectorAll(".tech-logo-container");
+const techParts = document.querySelectorAll(".technos-parts");
+const projectContainer = document.querySelector(".projets-section");
+const project = document.querySelectorAll(".project");
 
-const globalSectionsContainer = document.querySelector(
-  ".global-sections-container"
-);
+//********** scrolltop = scroll depuis le top du document et clientheight = viwport du client **********
 
-////typeWriter function////////
-
-function typeWriter(word, index, element) {
-  if (index < word.length) {
-    setTimeout(() => {
-      element.innerHTML += `<span>${word[index]}<span>`;
-      typeWriter(word, index + 1, element);
-    }, 30);
-  }
-}
-
-//////acceuil section////////
-
-const part1 = document.querySelector(".part-1");
-const part2 = document.querySelector(".part-2");
-const part3 = document.querySelector(".part-3");
-
-const txt =
-  "Bonjour à toi, je suis Sébastien et te souhaite la bienvenue sur mon portfolio. Et maintenant je t’invite à naviguer vers le bas pour en savoir plus sur moi.";
-
-const txtPart1 = "Bonjour à toi,";
-const txtPart2 =
-  "je suis Sébastien et te souhaite la bienvenue sur mon portfolio.";
-const txtPart3 =
-  "Maintenant je t’invite à naviguer vers le bas pour en savoir plus sur moi.";
-
-setTimeout(() => {
-  typeWriter(txtPart1, 0, part1);
-}, "1300");
-setTimeout(() => {
-  typeWriter(txtPart2, 0, part2);
-}, "2500");
-setTimeout(() => {
-  typeWriter(txtPart3, 0, part3);
-}, "5300");
-
-///////parcours animation/////////////
-
-const frise = document.querySelector(".timeline");
-const firstChild = frise.querySelector(":nth-child(1)");
-const secondChild = frise.querySelector(":nth-child(2)");
-const thirdChild = frise.querySelector(":nth-child(3)");
-
-const paragrapheParcours = document.querySelector(".parcours-bot");
-const txtParcours = "Tu peux retrouver tout mon parcours dans cette partie.";
 const { scrollTop, clientHeight } = document.documentElement;
 
 function parcoursHandleScroll() {
-  const topElementToTopViewport = frise.getBoundingClientRect().top;
+  const topElementToTopViewport = parcourContainer.getBoundingClientRect().top;
 
-  if (
-    scrollTop >
-    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
-  ) {
-    frise.style = "width:80%";
+  if (topElementToTopViewport - clientHeight * 0.3 <= 0) {
+    scholarList.classList.add("active");
+    workList.classList.add("active");
+  }
+  if (topElementToTopViewport - clientHeight * 0 <= 0) {
+    cv.classList.add("active");
+  }
+}
 
+function frontHandleScroll() {
+  const topElementToTopViewport = techParts[0].getBoundingClientRect().top;
+
+  if (topElementToTopViewport - clientHeight * 0.4 <= 0) {
+    techLogoContainer[0].classList.add("active");
     setTimeout(() => {
-      firstChild.classList.add("active-date");
-    }, 300);
-
+      techLogoContainer[1].classList.add("active");
+    }, 200);
     setTimeout(() => {
-      secondChild.classList.add("active-date");
-    }, 500);
-
+      techLogoContainer[3].classList.add("active");
+    }, 400);
     setTimeout(() => {
-      thirdChild.classList.add("active-date");
+      techLogoContainer[2].classList.add("active");
+    }, 600);
+    setTimeout(() => {
+      techLogoContainer[4].classList.add("active");
     }, 800);
-
-    typeWriter(txtParcours, 0, paragrapheParcours);
-
-    retourBtn.classList.add("opacity");
-    retourBtn.classList.add("transform");
-
-    globalSectionsContainer.removeEventListener("scroll", parcoursHandleScroll);
+    setTimeout(() => {
+      techLogoContainer[5].classList.add("active");
+    }, 1000);
   }
 }
 
-globalSectionsContainer.addEventListener("scroll", parcoursHandleScroll);
+function backHandleScroll() {
+  const topElementToTopViewport = techParts[1].getBoundingClientRect().top;
 
-// // /////////////projet section animation/////////////
+  if (topElementToTopViewport - clientHeight * 0.4 <= 0) {
+    techLogoContainer[6].classList.add("active");
+    setTimeout(() => {
+      techLogoContainer[7].classList.add("active");
+    }, 200);
+  }
+}
 
-const projetContainer = document.querySelector(".projet-container");
-const projet = document.querySelectorAll(".projet");
-const projetNom = document.querySelectorAll(".projet-nom");
-const gitHub = document.querySelector(".mes-projets-plus");
+function outilsHandleScroll() {
+  const topElementToTopViewport = techParts[2].getBoundingClientRect().top;
 
-const projetBot = document.querySelector(".projet-bot");
-const projetTextePart1 =
-  "Dans cette partie tu peux visionner mes différents projets, ";
-const projetTextePart2 = "n'hésites pas à cliquer dessus.";
-
-function projetHandleScroll() {
-  const topElementToTopViewport = projetContainer.getBoundingClientRect().top;
-
-  if (
-    scrollTop >
-    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
-  ) {
-    typeWriter(projetTextePart1, 0, projetBot);
+  if (topElementToTopViewport - clientHeight * 0.5 <= 0) {
+    techLogoContainer[8].classList.add("active");
+    setTimeout(() => {
+      techLogoContainer[9].classList.add("active");
+    }, 200);
+    setTimeout(() => {
+      techLogoContainer[10].classList.add("active");
+    }, 400);
 
     setTimeout(() => {
-      typeWriter(projetTextePart2, 0, projetBot);
-    }, 2300);
+      techLogoContainer[11].classList.add("active");
+    }, 600);
+  }
+}
 
-    for (let i = 0; i < projet.length; i++) {
-      projet.forEach((el) => {
-        setTimeout(() => {
-          el.style = "height: 15vmax;";
-          el.classList.add("active-project");
-        }, 500);
-      });
+function projectHandleScroll() {
+  for (let i = 0; i < project.length; i++) {
+    const topElementToTopViewport = project[i].getBoundingClientRect().top;
 
-      projetNom.forEach((el) => {
-        setTimeout(() => {
-          el.classList.add("active-projet-plus");
-          gitHub.classList.add("active-projet-plus");
-        }, 1500);
-      });
+    if (topElementToTopViewport - clientHeight * 0.6 <= 0) {
+      project[i].classList.add("active");
     }
-
-    globalSectionsContainer.removeEventListener("scroll", projetHandleScroll);
   }
 }
 
-globalSectionsContainer.addEventListener("scroll", projetHandleScroll);
-
-// // ///////////contact section animation///////////////
-
-const contactContainer = document.querySelector(".contact-container");
-const contactBot = document.querySelector(".contact-bot");
-
-const contactTextePart1 = "Et si tu veux me contacter, ";
-const contactTextePart2 =
-  "tu trouveras tout ce qu'il faut dans cette section !";
-
-function contactHandleScroll() {
-  const topElementToTopViewport = contactContainer.getBoundingClientRect().top;
-
-  if (
-    scrollTop >
-    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.5
-  ) {
-    typeWriter(contactTextePart1, 0, contactBot);
-
-    setTimeout(() => {
-      typeWriter(contactTextePart2, 0, contactBot);
-    }, 1800);
-
-    globalSectionsContainer.removeEventListener("scroll", contactHandleScroll);
-  }
-}
-
-globalSectionsContainer.addEventListener("scroll", contactHandleScroll);
-
-///////////////techno annimation section///////////////////////
-
-const technosContainer = document.querySelector(".techno-container");
-const technosBot = document.querySelector(".technos-bot");
-const technosText = "Voici les différents outils et technos que j'utilise";
-const technosImgNameContainer = document.querySelectorAll(
-  ".techno-image-container"
-);
-
-function technosHandleScroll() {
-  const topElementToTopViewport = technosContainer.getBoundingClientRect().top;
-
-  if (
-    scrollTop >
-    (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.9
-  ) {
-    typeWriter(technosText, 0, technosBot);
-
-    globalSectionsContainer.removeEventListener("scroll", technosHandleScroll);
-
-    // for (let i = 0; i < technosImgNameContainer.length; i++) {
-    technosImgNameContainer.forEach((el, i) => {
-      setTimeout(() => {
-        el.classList.add("active-techno");
-        el.style.transition = `transform 0.7s ease-in-out ${
-          i * 0.2
-        }s, opacity 0.7s ease-in-out ${i * 0.2}s`;
-      }, 500);
-    });
-  }
-}
-
-globalSectionsContainer.addEventListener("scroll", technosHandleScroll);
-
-//********** return at top function **********
-
-const retourBtn = document.querySelector(".retour");
-
-retourBtn.addEventListener("click", () => {
-  globalSectionsContainer.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
+window.addEventListener("scroll", () => {
+  parcoursHandleScroll();
+  frontHandleScroll();
+  backHandleScroll();
+  outilsHandleScroll();
+  projectHandleScroll();
 });
 
-/////////////////appear section///////////////
+//********** github api data **********
 
-const imageProfile = document.querySelector(".profile-image");
-const presentationBot = document.querySelector(".presentation-bot");
+const projectLink = document.querySelectorAll(".project-link");
+const projectImage = document.querySelectorAll(".project-image");
+const projectName = document.querySelectorAll(".project-name");
+const projectDescription = document.querySelectorAll(".project-description");
 
-setTimeout(() => {
-  imageProfile.classList.add("opacity");
-  presentationBot.classList.add("opacity");
-}, 800);
+let repositoryName = [];
+let readMe = [];
+let i = 0;
+
+const findURL = (text, i) => {
+  const urlRegex = /https?:\/\/seblau02\.github\.io\/[^/]+\/?(?!\))/;
+  const matchedUrl = text.match(urlRegex);
+  projectLink[i].href = matchedUrl[0];
+};
+
+const findImagesPath = (text, name, i) => {
+  const imagePathRegex = /src="([^"]+)" alt="/g;
+  const paths = [];
+  const images = [];
+
+  for (const matchedImages of text.matchAll(imagePathRegex)) {
+    paths.push(matchedImages[1]);
+
+    fetch(
+      `https://api.github.com/repos/seblau02/${name}/contents/${matchedImages[1]}`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        //********** create new img element and put project image inside **********
+
+        const img = document.createElement("img");
+        img.classList.add("project-image");
+        img.alt = "image vers projet";
+        img.src = data.download_url;
+        projectLink[i].appendChild(img);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+};
+
+function findDescription(text) {
+  const descriptionRegex = /### Description([\s\S]*?)### Détails/;
+
+  const match = text.match(descriptionRegex);
+
+  if (match && match[1]) {
+    projectDescription[i].innerText = match[1].trim();
+  }
+  return "";
+}
+
+fetch(`https://api.github.com/users/seblau02/repos`)
+  .then((response) => response.json())
+  .then((data) => {
+    repositoryName = data.map((el) => el.name);
+
+    for (const name of repositoryName) {
+      if (
+        name === "annecdote-loader" ||
+        name === "calculatrice" ||
+        name === "Portefolio-Sebastien_Lau" ||
+        name === "search-func"
+      ) {
+        continue;
+      }
+      fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
+        .then((response) => response.text())
+        .then((data) => {
+          // console.log(data);
+
+          //********** push data to readme array **********
+          readMe.push(data);
+
+          //********** find project url in readme data and put image url in html **********
+
+          findURL(data, i);
+
+          //********** put project name in html **********
+          projectName[i].innerText =
+            name.charAt(0).toUpperCase() + name.slice(1);
+
+          //********** find repos images and put image in html**********
+          findImagesPath(data, name, i);
+
+          //********** find description text **********
+          findDescription(data, i);
+
+          i++;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+//********** burger menu **********
+
+const burgerMenu = document.querySelector(".burger-menu");
+const ligne = document.querySelectorAll(".ligne");
+const navigationMenu = document.querySelector(".navigation-menu");
+
+burgerMenu.addEventListener("click", () => {
+  ligne[0].classList.toggle("rotate-left");
+  ligne[1].classList.toggle("rotate");
+  ligne[2].classList.toggle("rotate-right");
+  navigationMenu.classList.toggle("active");
+});
+
+//********** smooth scroll **********
+
+// const navLinks = [...document.querySelectorAll(".navigation-menu a")];
+// const sections = [...document.querySelectorAll("article")];
+
+// let sectionsPosition;
+
+// function positionCalculation() {
+//   sectionsPosition = sections.map((section) => section.offsetTop);
+// }
+// positionCalculation();
+
+// navLinks.forEach((link) => link.addEventListener("click", addScrollSmooth));
+
+// function addScrollSmooth(e) {
+//   const linkIndex = navLinks.indexOf(e.target);
+//   window.scrollTo({
+//     top: sectionsPosition[linkIndex],
+//     behavior: "smooth",
+//   });
+// }
+
+// window.addEventListener("resize", positionCalculation);
