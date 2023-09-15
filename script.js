@@ -149,11 +149,7 @@ function findDescription(text) {
   return "";
 }
 
-fetch(`https://api.github.com/users/seblau02/repos`, {
-  headers: {
-    Authorization: "Bearer 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",
-  },
-})
+fetch(`https://api.github.com/users/seblau02/repos`)
   .then((response) => response.json())
   .then((data) => {
     repositoryName = data.map((el) => el.name);
