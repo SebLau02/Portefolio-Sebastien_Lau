@@ -1,3 +1,14 @@
+fetch("config.json")
+  .then((response) => response.json())
+  .then((config) => {
+    const apiUrl = config.apiUrl;
+    const apiKey = config.apiKey;
+
+    // Utilisez les valeurs dans votre application
+    console.log(apiUrl);
+    console.log(apiKey);
+  });
+
 const parcourContainer = document.querySelector(".parcours-global-container");
 const scholar = document.querySelector(".scholar-work");
 const scholarList = document.querySelector(".scholar-list");
@@ -149,7 +160,11 @@ function findDescription(text) {
   return "";
 }
 
-fetch(`https://api.github.com/users/seblau02/repos`)
+fetch(`https://api.github.com/users/seblau02/repos`, {
+  headers: {
+    Authorization: "Bearer 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",
+  },
+})
   .then((response) => response.json())
   .then((data) => {
     repositoryName = data.map((el) => el.name);
@@ -208,27 +223,3 @@ burgerMenu.addEventListener("click", () => {
   ligne[2].classList.toggle("rotate-right");
   navigationMenu.classList.toggle("active");
 });
-
-//********** smooth scroll **********
-
-// const navLinks = [...document.querySelectorAll(".navigation-menu a")];
-// const sections = [...document.querySelectorAll("article")];
-
-// let sectionsPosition;
-
-// function positionCalculation() {
-//   sectionsPosition = sections.map((section) => section.offsetTop);
-// }
-// positionCalculation();
-
-// navLinks.forEach((link) => link.addEventListener("click", addScrollSmooth));
-
-// function addScrollSmooth(e) {
-//   const linkIndex = navLinks.indexOf(e.target);
-//   window.scrollTo({
-//     top: sectionsPosition[linkIndex],
-//     behavior: "smooth",
-//   });
-// }
-
-// window.addEventListener("resize", positionCalculation);

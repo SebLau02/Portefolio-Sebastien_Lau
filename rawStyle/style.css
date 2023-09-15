@@ -357,7 +357,6 @@ article > h2::after {
 	position: absolute;
 	top: 0;
 	left: 50%;
-	/*	transform: translateX(-50%) skew(5deg, 10deg);*/
 	z-index: -1;
 	color: #c9c3b1;
 	opacity: 0.5;
@@ -417,7 +416,6 @@ fith:#0f0c0c
 	height: 5vh;
 	background: linear-gradient(-175deg, #a84c7a, #3f56a4 50%);
 	border-radius: 2vw 2vw 2vw 2vw;
-	backdrop-filter: blur(10px);
 	font-size: clamp(1rem, 1.2vw, 3.2rem);
 	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
 		rgba(0, 0, 0, 0.23) 0px 6px 6px;
@@ -447,13 +445,13 @@ fith:#0f0c0c
 
 .burger-menu {
 	position: fixed;
-	top: 2.5%;
+	top: 2vh;
 	left: 2vh;
 	z-index: 6;
-	width: 5vh;
-	height: 5vh;
+	width: 14vw;
+	height: 6vh;
 	background: linear-gradient(180deg, #a84c7a -30%, #3f56a4 10%);
-	border-radius: 2vw 0 0 2vw;
+	border-radius: 2vw 2vw 0 0;
 	display: none;
 	border: none;
 	opacity: 0;
@@ -528,7 +526,7 @@ fith:#0f0c0c
 	opacity: 0;
 	animation: apparition 1s 0.1s ease-out forwards;
 }
-.presentation-container h3 {
+.presentation-container h2 {
 	margin-left: 1vw;
 	line-height: 5vh;
 	opacity: 0;
@@ -627,7 +625,6 @@ fith:#0f0c0c
 		transform: none;
 	}
 }
-
 /*---------------- parcours ----------------*/
 
 .scholar-work {
@@ -922,12 +919,15 @@ fith:#0f0c0c
 		display: block;
 	}
 	.navigation-menu {
-		transform-origin: left;
-		transform: scaleX(0);
+		flex-direction: column;
+		width: 14vw;
+		height: 70vh;
+		transform-origin: top;
+		transform: scaleY(0);
 		transition: transform 0.2s;
-		border-radius: 0 2vw 2vw 0;
-		left: 7vh;
-		width: 80vw;
+		border-radius: 0 0 2vw 2vw;
+		left: 2vh;
+		top: 7vh;
 	}
 	.navigation-menu.active {
 		transform: scaleX(1);
