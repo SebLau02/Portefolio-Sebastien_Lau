@@ -1,14 +1,3 @@
-fetch("config.json")
-  .then((response) => response.json())
-  .then((config) => {
-    const apiUrl = config.apiUrl;
-    const apiKey = config.apiKey;
-
-    // Utilisez les valeurs dans votre application
-    console.log(apiUrl);
-    console.log(apiKey);
-  });
-
 const parcourContainer = document.querySelector(".parcours-global-container");
 const scholar = document.querySelector(".scholar-work");
 const scholarList = document.querySelector(".scholar-list");
@@ -162,7 +151,7 @@ function findDescription(text) {
 
 fetch(`https://api.github.com/users/seblau02/repos`, {
   headers: {
-    Authorization: "Bearer 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",
+    Authorization: "Bearer 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",
   },
 })
   .then((response) => response.json())
