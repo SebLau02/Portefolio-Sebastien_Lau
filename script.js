@@ -12,6 +12,8 @@ const project = document.querySelectorAll(".project");
 
 const { scrollTop, clientHeight } = document.documentElement;
 
+//********** callback sur écoute au scroll sur la partie parcours pour appliquer des animations **********
+
 function parcoursHandleScroll() {
   const topElementToTopViewport = parcourContainer.getBoundingClientRect().top;
 
@@ -23,6 +25,8 @@ function parcoursHandleScroll() {
     cv.classList.add("active");
   }
 }
+
+//********** callback sur écoute au scroll sur la partie stack frontend pour appliquer des animations **********
 
 function frontHandleScroll() {
   const topElementToTopViewport = techParts[0].getBoundingClientRect().top;
@@ -47,6 +51,8 @@ function frontHandleScroll() {
   }
 }
 
+//********** callback sur écoute au scroll sur la partie stack backend pour appliquer des animations **********
+
 function backHandleScroll() {
   const topElementToTopViewport = techParts[1].getBoundingClientRect().top;
 
@@ -57,6 +63,8 @@ function backHandleScroll() {
     }, 200);
   }
 }
+
+//********** callback sur écoute au scroll sur la partie stack outils pour appliquer des animations **********
 
 function outilsHandleScroll() {
   const topElementToTopViewport = techParts[2].getBoundingClientRect().top;
@@ -76,6 +84,8 @@ function outilsHandleScroll() {
   }
 }
 
+//********** callback sur écoute au scroll sur la partie travaux pour appliquer des animations **********
+
 function projectHandleScroll() {
   for (let i = 0; i < project.length; i++) {
     const topElementToTopViewport = project[i].getBoundingClientRect().top;
@@ -94,7 +104,10 @@ window.addEventListener("scroll", () => {
   projectHandleScroll();
 });
 
-//********** github api data **********
+//********** récupération de données sur mon github **********
+
+//le but ici est de récupérer des projets que j'ai réalisé, depuis mon github
+//je récupère le readme de chaque projet qui contienent une description, des images, le nom du projet, le lien pour accéder au site.
 
 const projectLink = document.querySelectorAll(".project-link");
 const projectImage = document.querySelectorAll(".project-image");
@@ -137,6 +150,8 @@ const findImagesPath = (text, name, i) => {
   }
 };
 
+//********** trouver la description du projet dans le readme **********
+
 function findDescription(text) {
   const descriptionRegex = /### Description([\s\S]*?)### Détails/;
 
@@ -156,6 +171,8 @@ const repositoryName = [
   "credit-card-checkout",
   "Cocacola-Animation",
 ];
+
+//********** récupérer les readme de mes projets sur mon github **********
 
 for (const name of repositoryName) {
   fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)

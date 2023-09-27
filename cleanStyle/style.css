@@ -359,7 +359,7 @@ article > h2::after {
 	left: 50%;
 	z-index: -1;
 	color: #c9c3b1;
-	opacity: 0.5;
+	opacity: 0.3;
 	width: 90vw;
 	font-size: clamp(4rem, 6vw, 8rem);
 }
@@ -838,6 +838,7 @@ fith:#0f0c0c
 	opacity: 1;
 }
 .project-link {
+	/*	position: relative;*/
 	display: flex;
 	width: 50vw;
 	min-width: 280px;
@@ -846,6 +847,7 @@ fith:#0f0c0c
 	margin: 1vw auto;
 }
 .project-image {
+	/*	position: absolute;*/
 	width: 100%;
 	border-radius: 1vw;
 }
