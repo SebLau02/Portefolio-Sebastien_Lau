@@ -101,7 +101,6 @@ const projectImage = document.querySelectorAll(".project-image");
 const projectName = document.querySelectorAll(".project-name");
 const projectDescription = document.querySelectorAll(".project-description");
 
-let repositoryName = [];
 let readMe = [];
 let i = 0;
 
@@ -149,52 +148,43 @@ function findDescription(text) {
   return "";
 }
 
-fetch(`https://api.github.com/users/seblau02/repos`)
-  .then((response) => response.json())
-  .then((data) => {
-    repositoryName = data.map((el) => el.name);
+const repositoryName = [
+  "Miam",
+  "l-ardillon-shop",
+  "Pokedex-React",
+  "Memory",
+  "credit-card-checkout",
+  "Cocacola-Animation",
+];
 
-    for (const name of repositoryName) {
-      if (
-        name === "annecdote-loader" ||
-        name === "calculatrice" ||
-        name === "Portefolio-Sebastien_Lau" ||
-        name === "search-func"
-      ) {
-        continue;
-      }
-      fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
-        .then((response) => response.text())
-        .then((data) => {
-          // console.log(data);
+for (const name of repositoryName) {
+  fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
+    .then((response) => response.text())
+    .then((data) => {
+      // console.log(data);
 
-          //********** push data to readme array **********
-          readMe.push(data);
+      //********** push data to readme array **********
+      readMe.push(data);
 
-          //********** find project url in readme data and put image url in html **********
+      //********** find project url in readme data and put image url in html **********
 
-          findURL(data, i);
+      findURL(data, i);
 
-          //********** put project name in html **********
-          projectName[i].innerText =
-            name.charAt(0).toUpperCase() + name.slice(1);
+      //********** put project name in html **********
+      projectName[i].innerText = name.charAt(0).toUpperCase() + name.slice(1);
 
-          //********** find repos images and put image in html**********
-          findImagesPath(data, name, i);
+      //********** find repos images and put image in html**********
+      findImagesPath(data, name, i);
 
-          //********** find description text **********
-          findDescription(data, i);
+      //********** find description text **********
+      findDescription(data, i);
 
-          i++;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+      i++;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 //********** burger menu **********
 
