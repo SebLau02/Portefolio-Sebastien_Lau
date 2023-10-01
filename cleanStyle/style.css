@@ -747,10 +747,14 @@ fith:#0f0c0c
 	height: 5vw;
 }
 
-.tech-logo-container:hover *:not(h5) {
+.tech-logo-container:hover *:not(h5, h4) {
 	animation: bouncing 0.4s 0.2s;
 }
-
+.tech-logo-container > h4 {
+	font-weight: 900;
+	text-decoration: underline;
+	line-height: 3;
+}
 .tech-name {
 	margin-top: 0.5vw;
 	text-align: center;
@@ -863,6 +867,11 @@ fith:#0f0c0c
 .project-link :nth-child(3) {
 	opacity: 0;
 }
+
+/* quand je hover les images, la première prend opacity 0,
+la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
+
+ */
 
 .project-link:hover > :nth-child(1) {
 	opacity: 0;
