@@ -13,7 +13,7 @@ a {
 /*font famlily*/
 
 @font-face {
-	font-family: "jmh_typewriterregular", sans-serif;
+	font-family: "jmh_typewriterregular";
 	src: url("../assets/font/type-writer/jmh_typewriter-webfont.woff2")
 			format("woff2"),
 		url("../assets/font/type-writer/jmh_typewriter-webfont.woff")
