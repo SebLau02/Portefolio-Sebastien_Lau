@@ -934,9 +934,11 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 .contact {
 	visibility: hidden;
 }
-.github-link-logo {
+
+.social-link-logo {
 	min-width: 25px;
 	width: 3vw;
+	margin: 1vw;
 }
 .author {
 	position: absolute;
