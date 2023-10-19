@@ -361,8 +361,8 @@ article > h2::after {
 	opacity: 0.3;
 	width: 90vw;
 	font-size: clamp(4rem, 6vw, 8rem);
+	text-shadow: -2px 5px 5px rgba(66, 66, 66, 0.56);
 }
-
 .parcours-global-container > h2 {
 	transform: skew(0deg, -2deg);
 }
