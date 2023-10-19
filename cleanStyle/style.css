@@ -382,7 +382,7 @@ article > h2::after {
 	transform: translateX(-50%) skew(5deg, -10deg);
 }
 .technos-global-container > h2:after {
-	content: "Technologies";
+	content: "Stack";
 	transform: translateX(-50%) skew(5deg, 10deg);
 }
 
