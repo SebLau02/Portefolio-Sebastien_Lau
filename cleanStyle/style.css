@@ -334,7 +334,7 @@ html {
 
 .global-sections-container {
 	font-size: clamp(1.2rem, 1vw, 3rem);
-	transform: translateY(12vh);
+	margin-top: 15vh;
 }
 
 main article {
@@ -917,7 +917,6 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 1vw 0;
-	height: 13vh;
 	width: 100%;
 	background: #12244a;
 	font-size: clamp(1rem, 0.8vw, 2rem);
