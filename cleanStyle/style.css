@@ -344,8 +344,8 @@ main article {
 }
 main article > h2 {
 	width: 100%;
-	color: #0f0c0c;
-	background: #e8dec3;
+	color: var(--dark);
+	background: var(--cream);
 	transform: skew(0deg, -2deg);
 	padding: 4vh 0;
 	text-align: center;
@@ -357,7 +357,7 @@ main article > h2::after {
 	top: 0;
 	left: 50%;
 	z-index: -1;
-	color: #c9c3b1;
+	color: var(--cream);
 	opacity: 0.3;
 	width: 90vw;
 	font-size: clamp(4rem, 6vw, 8rem);
@@ -388,19 +388,10 @@ main article > h2::after {
 .parcours-global-container h2 span,
 .projets-section h2 span,
 .project-name {
-	color: #d25347;
+	color: var(--orangeRed);
 }
 
-/*---------------- colors
-
-
-first: #a84c7a
-second:#3f56a4
-third:#d25347
-fourth:#e8dec3
-fith:#0f0c0c
-
- ---------------- */
+/*---------------- colors ---------------- */
 
 :root {
 	--purple: #a84c7a;
@@ -409,6 +400,8 @@ fith:#0f0c0c
 	--cream: #e8dec3;
 	--dark: #0f0c0c;
 }
+
+/*---------------- ----------------*/
 
 .navigation-menu {
 	position: fixed;
@@ -421,7 +414,7 @@ fith:#0f0c0c
 	align-items: center;
 	width: 70vw;
 	height: 5vh;
-	background: linear-gradient(-175deg, #a84c7a, #3f56a4 50%);
+	background: linear-gradient(-175deg, var(--purple), var(--bluePurple) 50%);
 	border-radius: 2vw 2vw 2vw 2vw;
 	font-size: clamp(1rem, 1.2vw, 3.2rem);
 	box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
@@ -443,7 +436,7 @@ fith:#0f0c0c
 	width: 80%;
 	height: 2px;
 	content: "";
-	background: #e8dec3;
+	background: var(--cream);
 	transition: transform 0.2s ease;
 }
 .navigation-menu a:hover::after {
@@ -457,7 +450,11 @@ fith:#0f0c0c
 	z-index: 6;
 	width: 14vw;
 	height: 6vh;
-	background: linear-gradient(180deg, #a84c7a -30%, #3f56a4 10%);
+	background: linear-gradient(
+		180deg,
+		var(--purple) -30%,
+		var(--bluePurple) 10%
+	);
 	border-radius: 2vw 2vw 0 0;
 	display: none;
 	border: none;
@@ -470,7 +467,7 @@ fith:#0f0c0c
 	display: block;
 	width: 80%;
 	height: 2px;
-	background: #0f0c0c;
+	background: var(--dark);
 }
 
 .ligne-container {
@@ -529,7 +526,7 @@ fith:#0f0c0c
 }
 .presentation-container h1 {
 	line-height: 2vh;
-	color: #d25347;
+	color: var(--orangeRed);
 	opacity: 0;
 	animation: apparition 1s 0.1s ease-out forwards;
 }
@@ -566,12 +563,12 @@ fith:#0f0c0c
 	min-height: 130px;
 	border-radius: 33% 26% 90% 10% / 60% 25% 73% 40%;
 	transform: rotate(60deg);
-	background: #a84c7a;
+	background: var(--purple);
 }
 
 .view-project {
 	position: relative;
-	color: #0f0c0c;
+	color: var(--dark);
 	text-decoration: none;
 	padding: 1vw;
 	border-radius: 1vw;
@@ -590,7 +587,7 @@ fith:#0f0c0c
 	z-index: -1;
 	width: 100%;
 	height: 100%;
-	background: #3f56a4;
+	background: var(--bluePurple);
 	transform: scaleY(0);
 	transform-origin: center;
 	transition: transform 0.2s;
@@ -606,7 +603,7 @@ fith:#0f0c0c
 	width: 100%;
 	height: 100%;
 	border-radius: 0.8vw;
-	background: #e8dec3;
+	background: var(--cream);
 }
 
 .view-project:hover::before {
@@ -615,15 +612,14 @@ fith:#0f0c0c
 	transition: transform 0.2s;
 	border-radius: 0.8vw;
 }
-
 .view-project:hover {
-	color: #e8dec3;
+	color: var(--cream);
 }
 .view-project:active::before {
 	opacity: 0;
 }
 .view-project:active {
-	color: #0f0c0c;
+	color: var(--dark);
 }
 
 @keyframes apparition {
@@ -653,7 +649,7 @@ fith:#0f0c0c
 }
 .scholar-list,
 .work-list {
-	border-top: 1px solid #e8dec3;
+	border-top: 1px solid var(--orangeRed);
 	transform: scaleY(0);
 	transform-origin: top;
 	transition: transform 0.4s;
@@ -682,8 +678,8 @@ fith:#0f0c0c
 }
 
 .validate-year {
-	background: #e8dec3;
-	color: #0f0c0c;
+	background: var(--cream);
+	color: var(--dark);
 	height: fit-content;
 	padding: 0.5vw;
 	border-radius: 1vw;
@@ -720,7 +716,7 @@ fith:#0f0c0c
 	justify-content: start;
 	align-items: start;
 	flex-wrap: wrap;
-	border-top: 2px solid #e8dec3;
+	border-top: 2px solid var(--cream);
 	padding: 4vw 2vw 0 2vw;
 	margin: 8vw 2vw 0 2vw;
 }
@@ -738,7 +734,7 @@ fith:#0f0c0c
 }
 
 .technos-parts h3 {
-	border: 2px solid #d25347;
+	border: 2px solid var(--orangeRed);
 	border-radius: 1vw;
 	padding: 1vw;
 }
@@ -951,7 +947,7 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	transform: translateX(-50%);
 }
 
-/*----------------  ----------------*/
+/*---------------- annecdote animation ----------------*/
 
 .annecdote-global-container {
 	position: fixed;
@@ -959,9 +955,12 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	right: 2.5%;
 	z-index: 1;
 	width: 20vw;
-	height: 6vh;
-	min-width: fit-content;
-	min-height: fit-content;
+	height: 7vh;
+	min-width: 120px;
+	min-height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background: linear-gradient(-50deg, var(--purple), var(--bluePurple));
 	padding: 1vw;
 	border-radius: 1vw;
@@ -971,6 +970,7 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100%;
 	opacity: 0;
 	transform: translateY(-100%);
 }
@@ -978,8 +978,8 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	animation: inOut 4s infinite;
 }
 .annecdote-container img {
-	width: 3vw;
-	min-width: 30px;
+	height: 80%;
+	min-height: 30px;
 	margin-right: 1vw;
 }
 

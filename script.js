@@ -59,7 +59,7 @@ function frontHandleScroll() {
 function backHandleScroll() {
   const topElementToTopViewport = techParts[1].getBoundingClientRect().top;
 
-  if (topElementToTopViewport - clientHeight * 0.4 <= 0) {
+  if (topElementToTopViewport - clientHeight * 0.8 <= 0) {
     techLogoContainer[6].classList.add("active");
     setTimeout(() => {
       techLogoContainer[7].classList.add("active");
@@ -72,7 +72,7 @@ function backHandleScroll() {
 function outilsHandleScroll() {
   const topElementToTopViewport = techParts[2].getBoundingClientRect().top;
 
-  if (topElementToTopViewport - clientHeight * 0.5 <= 0) {
+  if (topElementToTopViewport - clientHeight * 0.8 <= 0) {
     techLogoContainer[8].classList.add("active");
     setTimeout(() => {
       techLogoContainer[9].classList.add("active");
@@ -101,10 +101,10 @@ function projectHandleScroll() {
 
 window.addEventListener("scroll", () => {
   parcoursHandleScroll();
+  projectHandleScroll();
   frontHandleScroll();
   backHandleScroll();
   outilsHandleScroll();
-  projectHandleScroll();
 });
 
 //********** récupération de données sur mon github **********
@@ -277,6 +277,7 @@ const inOut = (resultat) => {
     }
   } else {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
+    keySpan.innerText = "";
     annecdoteSpan.innerText = "Beaucoups";
   }
 
