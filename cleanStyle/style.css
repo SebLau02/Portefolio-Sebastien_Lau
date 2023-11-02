@@ -337,12 +337,12 @@ html {
 	transform: translateY(12vh);
 }
 
-article {
+main article {
 	position: relative;
 	max-width: 100vw;
 	margin: 6vw 0;
 }
-article > h2 {
+main article > h2 {
 	width: 100%;
 	color: #0f0c0c;
 	background: #e8dec3;
@@ -352,7 +352,7 @@ article > h2 {
 	margin: 4vh 0;
 }
 
-article > h2::after {
+main article > h2::after {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -393,6 +393,7 @@ article > h2::after {
 
 /*---------------- colors
 
+
 first: #a84c7a
 second:#3f56a4
 third:#d25347
@@ -401,10 +402,18 @@ fith:#0f0c0c
 
  ---------------- */
 
+:root {
+	--purple: #a84c7a;
+	--bluePurple: #3f56a4;
+	--orangeRed: #d25347;
+	--cream: #e8dec3;
+	--dark: #0f0c0c;
+}
+
 .navigation-menu {
 	position: fixed;
 	top: 2.5%;
-	left: 50%;
+	left: 40%;
 	z-index: 5;
 	transform: translateX(-50%);
 	display: flex;
@@ -940,6 +949,55 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	bottom: 10%;
 	left: 50%;
 	transform: translateX(-50%);
+}
+
+/*----------------  ----------------*/
+
+.annecdote-global-container {
+	position: fixed;
+	top: 2.5%;
+	right: 2.5%;
+	z-index: 1;
+	width: 20vw;
+	height: 6vh;
+	min-width: fit-content;
+	min-height: fit-content;
+	background: linear-gradient(-50deg, var(--purple), var(--bluePurple));
+	padding: 1vw;
+	border-radius: 1vw;
+	font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+.annecdote-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transform: translateY(-100%);
+}
+.annecdote-container.active {
+	animation: inOut 4s infinite;
+}
+.annecdote-container img {
+	width: 3vw;
+	min-width: 30px;
+	margin-right: 1vw;
+}
+
+@keyframes inOut {
+	0%,
+	100% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	20%,
+	80% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	99% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
 }
 
 /*****************-- media queries --*****************/

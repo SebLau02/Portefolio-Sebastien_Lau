@@ -7,6 +7,9 @@ const techLogoContainer = document.querySelectorAll(".tech-logo-container");
 const techParts = document.querySelectorAll(".technos-parts");
 const projectContainer = document.querySelector(".projets-section");
 const project = document.querySelectorAll(".project");
+const annecdoteContainer = document.querySelector(".annecdote-container");
+const annecdoteImg = document.querySelector(".annecdote-img");
+const annecdoteSpans = document.querySelectorAll(".annecdote-description span");
 
 //********** scrolltop = scroll depuis le top du document et clientheight = viwport du client **********
 
@@ -196,6 +199,8 @@ for (const name of repositoryName) {
       //********** find description text **********
       findDescription(data, i);
 
+      findStack(data);
+
       i++;
     })
     .catch((error) => {
@@ -215,3 +220,69 @@ burgerMenu.addEventListener("click", () => {
   ligne[2].classList.toggle("rotate-right");
   navigationMenu.classList.toggle("active");
 });
+
+let foundedStack = [];
+const keys = [
+  "react.png",
+  "nodejs.png",
+  "gsap.svg",
+  "tailwind.png",
+  "café.png",
+];
+let index = 4;
+
+const findStack = (text) => {
+  const regex = /(?<=Technologies:)(.*?)(?=\n\n###|\nImages)/gs;
+
+  const matchedStack = text.match(regex);
+
+  const stacks = matchedStack[0].split(",");
+
+  foundedStack = [...foundedStack, ...stacks];
+
+  for (let i = 0; i < foundedStack.length; i++) {
+    foundedStack[i] = foundedStack[i].toLowerCase();
+  }
+
+  let compteur = {};
+
+  const resultat = foundedStack.reduce((compteur, element) => {
+    if (compteur[element]) {
+      compteur[element]++;
+    } else {
+      compteur[element] = 1;
+    }
+    return compteur;
+  }, {});
+
+  annecdoteContainer.classList.add("active");
+  setInterval(() => {
+    inOut(resultat);
+  }, 4000);
+};
+
+//********** annecdote section animation **********
+
+const inOut = (resultat) => {
+  const keySpan = annecdoteSpans[0];
+  const annecdoteSpan = annecdoteSpans[1];
+
+  if (keys[index] !== "café.png") {
+    annecdoteImg.src = `assets/technos/${keys[index]}`;
+    keySpan.innerText = Object.values(resultat)[index];
+    if (Object.values(resultat)[index] > 1) {
+      annecdoteSpan.innerText = "projets";
+    } else {
+      annecdoteSpan.innerText = "projet";
+    }
+  } else {
+    annecdoteImg.src = `assets/technos/${keys[index]}`;
+    annecdoteSpan.innerText = "Beaucoups";
+  }
+
+  index++;
+
+  if (index >= keys.length) {
+    index = 0;
+  }
+};
