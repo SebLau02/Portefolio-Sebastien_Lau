@@ -221,6 +221,8 @@ burgerMenu.addEventListener("click", () => {
   navigationMenu.classList.toggle("active");
 });
 
+//********** annecdote section animation **********
+
 let foundedStack = [];
 const keys = [
   "react.png",
@@ -228,15 +230,22 @@ const keys = [
   "gsap.svg",
   "tailwind.png",
   "café.png",
+  "clavier.png",
 ];
-let index = 4;
+let index = 0;
+let reducedFoundedStack = {};
+let updatedFoundedStack = {};
 
 const findStack = (text) => {
+  // je récupère les différentes technos que j'ai utilisé depuis mon GH
+
   const regex = /(?<=Technologies:)(.*?)(?=\n\n###|\nImages)/gs;
 
   const matchedStack = text.match(regex);
 
   const stacks = matchedStack[0].split(",");
+
+  // je l'ajoute dans un tableau temporaire puis je réduis tous les éléments du tableau en minuscule
 
   foundedStack = [...foundedStack, ...stacks];
 
@@ -244,9 +253,9 @@ const findStack = (text) => {
     foundedStack[i] = foundedStack[i].toLowerCase();
   }
 
-  let compteur = {};
+  // je réduit le tableau en rassemblant les éléments qui se répètent
 
-  const resultat = foundedStack.reduce((compteur, element) => {
+  reducedFoundedStack = foundedStack.reduce((compteur, element) => {
     if (compteur[element]) {
       compteur[element]++;
     } else {
@@ -255,30 +264,34 @@ const findStack = (text) => {
     return compteur;
   }, {});
 
-  annecdoteContainer.classList.add("active");
-  setInterval(() => {
-    inOut(resultat);
-  }, 4000);
+  const keywordsToRemove = ["html", "css", "javascript", "javascript vanilla"];
+
+  updatedFoundedStack = filterKeys(reducedFoundedStack, keywordsToRemove);
 };
 
-//********** annecdote section animation **********
+//function permettant de faire défiler les différent éléments
 
 const inOut = (resultat) => {
   const keySpan = annecdoteSpans[0];
   const annecdoteSpan = annecdoteSpans[1];
 
-  if (keys[index] !== "café.png") {
+  if (keys[index] !== "café.png" && keys[index] !== "clavier.png") {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
     keySpan.innerText = Object.values(resultat)[index];
-    if (Object.values(resultat)[index] > 1) {
+
+    if (Object.values(keys[index], resultat)[index] > 1) {
       annecdoteSpan.innerText = "projets";
     } else {
       annecdoteSpan.innerText = "projet";
     }
-  } else {
+  } else if (keys[index] === "café.png") {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
     keySpan.innerText = "";
     annecdoteSpan.innerText = "Beaucoups";
+  } else {
+    annecdoteImg.src = `assets/technos/${keys[index]}`;
+    keySpan.innerText = "52.2mpm";
+    annecdoteSpan.innerText = "94.2%";
   }
 
   index++;
@@ -286,4 +299,23 @@ const inOut = (resultat) => {
   if (index >= keys.length) {
     index = 0;
   }
+};
+
+setTimeout(() => {
+  annecdoteContainer.classList.add("active");
+  inOut(updatedFoundedStack);
+
+  setInterval(() => {
+    inOut(updatedFoundedStack);
+  }, 4000);
+}, 2000);
+
+const filterKeys = (obj, keywords) => {
+  const filteredObj = {};
+  for (const key in obj) {
+    if (!keywords.includes(key.trim())) {
+      filteredObj[key] = obj[key];
+    }
+  }
+  return filteredObj;
 };

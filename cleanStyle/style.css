@@ -28,6 +28,18 @@ html {
 	scroll-behavior: smooth;
 }
 
+/*---------------- colors ---------------- */
+
+:root {
+	--purple: #a84c7a;
+	--bluePurple: #3f56a4;
+	--orangeRed: #d25347;
+	--cream: #e8dec3;
+	--dark: #0f0c0c;
+}
+
+/*---------------- ----------------*/
+
 /*background animation*/
 
 @keyframes move {
@@ -336,7 +348,6 @@ html {
 	font-size: clamp(1.2rem, 1vw, 3rem);
 	margin-top: 15vh;
 }
-
 main article {
 	position: relative;
 	max-width: 100vw;
@@ -390,18 +401,6 @@ main article > h2::after {
 .project-name {
 	color: var(--orangeRed);
 }
-
-/*---------------- colors ---------------- */
-
-:root {
-	--purple: #a84c7a;
-	--bluePurple: #3f56a4;
-	--orangeRed: #d25347;
-	--cream: #e8dec3;
-	--dark: #0f0c0c;
-}
-
-/*---------------- ----------------*/
 
 .navigation-menu {
 	position: fixed;
@@ -953,33 +952,52 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	top: 2.5%;
 	right: 2.5%;
 	z-index: 1;
+
 	width: 20vw;
 	height: 7vh;
 	min-width: 120px;
 	min-height: 40px;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	background: linear-gradient(-50deg, var(--purple), var(--bluePurple));
-	padding: 1vw;
 	border-radius: 1vw;
+	padding: 1vw;
+
 	font-size: clamp(1.2rem, 2vw, 1.6rem);
+
+	overflow-y: hidden;
+
+	transform: translateY(-100%);
+	opacity: 0;
+
+	animation: apparition 0.9s 2s ease forwards;
 }
+
 .annecdote-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	height: 100%;
+
 	opacity: 0;
 	transform: translateY(-100%);
+
+	animation: inOut 4s 2s infinite;
 }
 .annecdote-container.active {
-	animation: inOut 4s infinite;
 }
 .annecdote-container img {
 	height: 80%;
 	min-height: 30px;
+
 	margin-right: 1vw;
+}
+.annecdote-description {
+	align-self: end;
 }
 
 @keyframes inOut {
@@ -1014,12 +1032,16 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	}
 	.navigation-menu {
 		flex-direction: column;
+
 		width: 14vw;
 		height: 70vh;
+
 		transform-origin: top;
 		transform: scaleY(0);
 		transition: transform 0.2s;
+
 		border-radius: 0 0 2vw 2vw;
+
 		left: 2vh;
 		top: 7vh;
 	}
