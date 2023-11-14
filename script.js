@@ -1,3 +1,5 @@
+//********** selection des éléments du dom **********
+
 const parcourContainer = document.querySelector(".parcours-global-container");
 const scholar = document.querySelector(".scholar-work");
 const scholarList = document.querySelector(".scholar-list");
@@ -105,6 +107,7 @@ window.addEventListener("scroll", () => {
   frontHandleScroll();
   backHandleScroll();
   outilsHandleScroll();
+  parallaxScroll();
 });
 
 //********** récupération de données sur mon github **********
@@ -319,3 +322,27 @@ const filterKeys = (obj, keywords) => {
   }
   return filteredObj;
 };
+
+//-----------------------------------------------------------------------------------------------
+//-- parallax animations
+
+const profileImage = document.querySelector(".profile-image");
+const parcoursTitle = document.querySelector("#parcours >h2");
+
+window.addEventListener("scroll", () => {});
+
+const parallaxScroll = () => {
+  const scrolled = window.pageYOffset;
+
+  profileImage.style.transform = `translateY(${scrolled * 0.2}px)`;
+};
+
+/* Lenis Smooth scroll */
+const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);

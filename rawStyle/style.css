@@ -28,6 +28,30 @@ html {
 	scroll-behavior: smooth;
 }
 
+/*---------------- lenis scroll ----------------*/
+
+/* purgecss start ignore */
+html.lenis {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+/* purgecss end ignore */
+
 /*---------------- colors ---------------- */
 
 :root {
@@ -519,7 +543,10 @@ main article > h2::after {
 .profile-global-container {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
+	/*	align-items: center;*/
+
+	/*	margin: 10vh 0 15vh;*/
+	height: 80vh;
 }
 
 .presentation-container {
@@ -527,19 +554,22 @@ main article > h2::after {
 	width: 40%;
 }
 .presentation-container h1 {
-	line-height: 2vh;
-	color: var(--orangeRed);
+	margin-bottom: 2vh;
+
 	opacity: 0;
 	animation: apparition 1s 0.1s ease-out forwards;
 }
+.presentation-container h1 > span {
+	color: var(--orangeRed);
+}
 .presentation-container h2 {
-	margin-left: 1vw;
-	line-height: 5vh;
+	margin-left: 2vh;
+	margin-bottom: 2vh;
+
 	opacity: 0;
 	animation: apparition 1s 0.3s ease-out forwards;
 }
 .presentation-container p {
-	line-height: 2.5vh;
 	opacity: 0;
 	animation: apparition 1s 0.4s ease-out forwards;
 }
@@ -718,7 +748,9 @@ main article > h2::after {
 	justify-content: start;
 	align-items: start;
 	flex-wrap: wrap;
+
 	border-top: 2px solid var(--cream);
+
 	padding: 4vw 2vw 0 2vw;
 	margin: 8vw 2vw 0 2vw;
 }
@@ -740,6 +772,7 @@ main article > h2::after {
 }
 
 .technos-parts h3 {
+	position: relative;
 	border: 2px solid var(--orangeRed);
 	border-radius: 1vw;
 	padding: 1vw;
