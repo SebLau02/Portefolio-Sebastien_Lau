@@ -543,9 +543,8 @@ main article > h2::after {
 .profile-global-container {
 	display: flex;
 	justify-content: space-around;
-	/*	align-items: center;*/
+	align-items: center;
 
-	/*	margin: 10vh 0 15vh;*/
 	height: 80vh;
 }
 
@@ -992,10 +991,9 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	top: 2.5%;
 	right: 2.5%;
 	z-index: 1;
-
-	width: 20vw;
-	height: 7vh;
-	min-width: 120px;
+	width: 15vw;
+	height: 4vw;
+	min-width: 100px;
 	min-height: 40px;
 
 	display: flex;
@@ -1028,16 +1026,12 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 
 	animation: inOut 4s 2s infinite;
 }
-.annecdote-container.active {
-}
+
 .annecdote-container img {
 	height: 80%;
 	min-height: 30px;
 
 	margin-right: 1vw;
-}
-.annecdote-description {
-	align-self: end;
 }
 
 @keyframes inOut {

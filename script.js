@@ -280,17 +280,17 @@ const inOut = (resultat) => {
 
   if (keys[index] !== "café.png" && keys[index] !== "clavier.png") {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
-    keySpan.innerText = Object.values(resultat)[index];
+    annecdoteSpan.innerText = Object.values(resultat)[index];
 
     if (Object.values(keys[index], resultat)[index] > 1) {
-      annecdoteSpan.innerText = "projets";
+      annecdoteSpan.innerText = "x";
     } else {
-      annecdoteSpan.innerText = "projet";
+      keySpan.innerText = "x";
     }
   } else if (keys[index] === "café.png") {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
-    keySpan.innerText = "";
-    annecdoteSpan.innerText = "Beaucoups";
+    keySpan.innerText = "too ";
+    annecdoteSpan.innerText = "much";
   } else {
     annecdoteImg.src = `assets/technos/${keys[index]}`;
     keySpan.innerText = "52.2mpm";
@@ -327,17 +327,16 @@ const filterKeys = (obj, keywords) => {
 //-- parallax animations
 
 const profileImage = document.querySelector(".profile-image");
-const parcoursTitle = document.querySelector("#parcours >h2");
-
-window.addEventListener("scroll", () => {});
+const parcoursTitle = document.querySelector("#parcours > h2");
 
 const parallaxScroll = () => {
   const scrolled = window.pageYOffset;
 
-  profileImage.style.transform = `translateY(${scrolled * 0.2}px)`;
+  profileImage.style.transform = `translateY(${scrolled * 0.1}px)`;
 };
 
 /* Lenis Smooth scroll */
+
 const lenis = new Lenis();
 
 function raf(time) {
