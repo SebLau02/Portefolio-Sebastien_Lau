@@ -1,4 +1,4 @@
-//********** selection des éléments du dom **********
+//********** éléments du dom **********
 
 const parcourContainer = document.querySelector(".parcours-global-container");
 const scholar = document.querySelector(".scholar-work");
@@ -15,7 +15,7 @@ const annecdoteSpans = document.querySelectorAll(".annecdote-description span");
 
 //********** scrolltop = scroll depuis le top du document et clientheight = viwport du client **********
 
-const { scrollTop, clientHeight } = document.documentElement;
+const { clientHeight } = document.documentElement;
 
 //********** callback sur écoute au scroll sur la partie parcours pour appliquer des animations **********
 
@@ -108,7 +108,10 @@ window.addEventListener("scroll", () => {
   backHandleScroll();
   outilsHandleScroll();
   parallaxScroll();
+  hiddenNavFunc();
 });
+
+//---------------------------------------------
 
 //********** récupération de données sur mon github **********
 
@@ -156,6 +159,8 @@ const findImagesPath = (text, name, i) => {
   }
 };
 
+//---------------------------------------------
+
 //********** trouver la description du projet dans le readme **********
 
 function findDescription(text) {
@@ -176,7 +181,10 @@ const repositoryName = [
   "Memory",
   "credit-card-checkout",
   "Cocacola-Animation",
+  "scrolltrigger",
 ];
+
+//---------------------------------------------
 
 //********** récupérer les readme de mes projets sur mon github **********
 
@@ -211,6 +219,8 @@ for (const name of repositoryName) {
     });
 }
 
+//---------------------------------------------
+
 //********** burger menu **********
 
 const burgerMenu = document.querySelector(".burger-menu");
@@ -223,6 +233,8 @@ burgerMenu.addEventListener("click", () => {
   ligne[2].classList.toggle("rotate-right");
   navigationMenu.classList.toggle("active");
 });
+
+//---------------------------------------------
 
 //********** annecdote section animation **********
 
@@ -323,7 +335,8 @@ const filterKeys = (obj, keywords) => {
   return filteredObj;
 };
 
-//-----------------------------------------------------------------------------------------------
+//---------------------------------------------
+
 //-- parallax animations
 
 const profileImage = document.querySelector(".profile-image");
@@ -335,6 +348,8 @@ const parallaxScroll = () => {
   profileImage.style.transform = `translateY(${scrolled * 0.1}px)`;
 };
 
+//---------------------------------------------
+
 /* Lenis Smooth scroll */
 
 const lenis = new Lenis();
@@ -345,3 +360,25 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+//---------------------------------------------
+
+//********** détecter si je scroll vers le haut ou bas pour cacher/afficher la nav bar **********
+
+let scrollY = window.scrollY;
+
+const hiddenNavFunc = () => {
+  if (window.scrollY <= scrollY) {
+    console.log("show", scrollY, window.scrollY);
+
+    navigationMenu.classList.remove("hidden");
+
+    scrollY = window.scrollY;
+  } else {
+    console.log("hidden", scrollY, window.scrollY);
+
+    navigationMenu.classList.add("hidden");
+
+    scrollY = window.scrollY;
+  }
+};
