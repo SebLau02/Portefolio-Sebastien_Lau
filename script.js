@@ -182,6 +182,7 @@ const repositoryName = [
   "credit-card-checkout",
   "Cocacola-Animation",
   "scrolltrigger",
+  "Check-weather",
 ];
 
 //---------------------------------------------
@@ -369,14 +370,10 @@ let scrollY = window.scrollY;
 
 const hiddenNavFunc = () => {
   if (window.scrollY <= scrollY) {
-    console.log("show", scrollY, window.scrollY);
-
     navigationMenu.classList.remove("hidden");
 
     scrollY = window.scrollY;
   } else {
-    console.log("hidden", scrollY, window.scrollY);
-
     navigationMenu.classList.add("hidden");
 
     scrollY = window.scrollY;
