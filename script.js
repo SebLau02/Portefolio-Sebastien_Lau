@@ -127,9 +127,10 @@ let readMe = [];
 let i = 0;
 
 const findURL = (text, i) => {
-  const urlRegex = /https?:\/\/seblau02\.github\.io\/[^/]+\/?(?!\))/;
+  const urlRegex = /laisse le découvrir \[ici\]\((https:\/\/[^\s)]+)\)/;
   const matchedUrl = text.match(urlRegex);
-  projectLink[i].href = matchedUrl[0];
+  console.log(projectLink[i]);
+  projectLink[i].href = matchedUrl[1];
 };
 
 const findImagesPath = (text, name, i) => {
@@ -173,6 +174,11 @@ function findDescription(text) {
   }
   return "";
 }
+
+// pour ajouter une nouveau projet:
+// - ajouter le nom du repos ci-dessous
+// - ajouter une nouvelle section project-link dans index.html
+// - ne pas oublier de bien écrire le readme et d'ajouter des images  d'illustratuion
 
 const repositoryName = [
   "Miam",
