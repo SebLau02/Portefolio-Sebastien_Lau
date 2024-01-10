@@ -129,7 +129,6 @@ let i = 0;
 const findURL = (text, i) => {
   const urlRegex = /laisse le découvrir \[ici\]\((https:\/\/[^\s)]+)\)/;
   const matchedUrl = text.match(urlRegex);
-  console.log(projectLink[i]);
   projectLink[i].href = matchedUrl[1];
 };
 
@@ -177,11 +176,12 @@ function findDescription(text) {
 
 // pour ajouter une nouveau projet:
 // - ajouter le nom du repos ci-dessous
-// - ajouter une nouvelle section project-link dans index.html
+// - ajouter une nouvelle section project dans index.html
 // - ne pas oublier de bien écrire le readme et d'ajouter des images  d'illustratuion
 
+// Ce projet est en attente :
+
 const repositoryName = [
-  "Miam",
   "l-ardillon-shop",
   "Pokedex-React",
   "Memory",
@@ -189,6 +189,8 @@ const repositoryName = [
   "Cocacola-Animation",
   "scrolltrigger",
   "Check-weather",
+  "Travel-Agency",
+  "Miam",
 ];
 
 //---------------------------------------------

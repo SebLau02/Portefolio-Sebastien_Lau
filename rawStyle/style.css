@@ -896,21 +896,35 @@ main article > h2::after {
 }
 .project-link {
 	position: relative;
+
 	display: flex;
+
 	height: 26vw;
 	width: 50vw;
 	min-width: 280px;
 	min-height: 147px;
+
 	border-radius: 1vw;
+
 	margin: 1vw auto;
+
+	object-fit: contain;
+
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .project-image {
 	position: absolute;
-	height: auto;
-	top: 0;
-	left: 0;
-	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	height: 100%;
+
+	max-width: 100%;
+
 	border-radius: 1vw;
+
 	transition: opacity 1s ease;
 }
 .project-link :nth-child(2) {
