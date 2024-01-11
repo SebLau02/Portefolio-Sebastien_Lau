@@ -784,9 +784,12 @@ main article > h2::after {
 
 .technos-parts h3 {
 	position: relative;
+
 	border: 2px solid var(--orangeRed);
 	border-radius: 1vw;
 	padding: 1vw;
+
+	letter-spacing: 2px;
 }
 
 .tech-logo-container {
@@ -799,7 +802,6 @@ main article > h2::after {
 	min-height: 30px;
 	height: 5vw;
 }
-
 .tech-logo-container:hover *:not(h5, h4) {
 	animation: bouncing 0.4s 0.2s;
 }
@@ -807,11 +809,15 @@ main article > h2::after {
 	font-weight: 900;
 	text-decoration: underline;
 	line-height: 3;
+	letter-spacing: 3px;
+	text-underline-offset: 0.8em;
 }
 .tech-name {
 	margin-top: 0.5vw;
+
 	text-align: center;
 	font-weight: bold;
+
 	transition: all 0.3s ease-in-out;
 }
 
@@ -911,6 +917,8 @@ main article > h2::after {
 	object-fit: contain;
 
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+	background: #ffffff;
 }
 
 .project-image {
