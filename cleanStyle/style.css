@@ -771,8 +771,31 @@ main article > h2::after {
 	flex-direction: column;
 }
 
-.tech-logo-container > h5 {
-	margin-bottom: 3vw;
+.css-container::before,
+.javascript-container::before {
+	position: absolute;
+	top: 120%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: block;
+
+	content: "";
+
+	width: 3px;
+	height: 4vw;
+
+	background-color: var(--cream);
+
+	transform: scaleY(0);
+	transform-origin: top;
+
+	transition: transform ease 0.5s;
+}
+
+.css-container.active::before,
+.javascript-container.active::before {
+	transform: scaleY(1);
 }
 
 .technos-parts h3 {
@@ -787,8 +810,10 @@ main article > h2::after {
 
 .tech-logo-container {
 	position: relative;
-	margin: 5vw 0 0 5vw;
+
 	text-align: center;
+
+	margin: 4vw 5vw;
 }
 
 .logos {
@@ -801,7 +826,7 @@ main article > h2::after {
 .tech-logo-container > h4 {
 	font-weight: 900;
 	text-decoration: underline;
-	line-height: 3;
+	line-height: 5;
 	letter-spacing: 3px;
 	text-underline-offset: 0.8em;
 }
@@ -990,13 +1015,6 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	min-width: 220px;
 	width: fit-content;
 	cursor: pointer;
-}
-.contact-container h4:hover + .contact {
-	visibility: visible;
-}
-
-.contact {
-	visibility: hidden;
 }
 
 .social-link-logo {

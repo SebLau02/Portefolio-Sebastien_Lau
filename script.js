@@ -184,13 +184,13 @@ function findDescription(text) {
 const repositoryName = [
   "l-ardillon-shop",
   "Pokedex-React",
-  "Memory",
-  "credit-card-checkout",
-  "Cocacola-Animation",
-  "scrolltrigger",
+  "Miam",
   "Check-weather",
   "Travel-Agency",
-  "Miam",
+  "scrolltrigger",
+  "Cocacola-Animation",
+  "Memory",
+  "credit-card-checkout",
 ];
 
 //---------------------------------------------
