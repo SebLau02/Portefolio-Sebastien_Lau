@@ -776,7 +776,7 @@ main article > h2::after {
 	position: absolute;
 	top: 120%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 0) scaleY(0);
 
 	display: block;
 
@@ -787,15 +787,13 @@ main article > h2::after {
 
 	background-color: var(--cream);
 
-	transform: scaleY(0);
 	transform-origin: top;
 
 	transition: transform ease 0.5s;
 }
-
 .css-container.active::before,
 .javascript-container.active::before {
-	transform: scaleY(1);
+	transform: translate(-50%, 0) scaleY(1);
 }
 
 .technos-parts h3 {
