@@ -247,18 +247,19 @@ burgerMenu.addEventListener("click", () => {
 
 //********** annecdote section animation **********
 
-let foundedStack = [];
-const keys = [
+let foundedStack = []; // toutes les technos utilisées dans les projets (temporaire)
+const stackImages = [
   "react.png",
   "nodejs.png",
   "gsap.svg",
   "tailwind.png",
   "café.png",
   "clavier.png",
-];
-let index = 0;
-let reducedFoundedStack = {};
-let updatedFoundedStack = {};
+]; //nom de mes images d'illustrations
+
+let stackIndex = 0;
+let reducedFoundedStack = {}; // toutes les technos utilisées dans les projets (temporaire)
+let updatedFoundedStack = {}; // toutes les technos utilisées dans les projets (définitif)
 
 const findStack = (text) => {
   // je récupère les différentes technos que j'ai utilisé depuis mon GH
@@ -270,7 +271,6 @@ const findStack = (text) => {
   const stacks = matchedStack[0].split(",");
 
   // je l'ajoute dans un tableau temporaire puis je réduis tous les éléments du tableau en minuscule
-
   foundedStack = [...foundedStack, ...stacks];
 
   for (let i = 0; i < foundedStack.length; i++) {
@@ -278,6 +278,7 @@ const findStack = (text) => {
   }
 
   // je réduit le tableau en rassemblant les éléments qui se répètent
+  // et je rajoute un compteur pour savoir combient ils se répètent
 
   reducedFoundedStack = foundedStack.reduce((compteur, element) => {
     if (compteur[element]) {
@@ -288,57 +289,85 @@ const findStack = (text) => {
     return compteur;
   }, {});
 
-  const keywordsToRemove = ["html", "css", "javascript", "javascript vanilla"];
+  const keywordsToRemove = [
+    "html",
+    "css",
+    "javascript",
+    "javascript vanilla",
+    "html5",
+    "js",
+    "css3",
+  ];
 
   updatedFoundedStack = filterKeys(reducedFoundedStack, keywordsToRemove);
+
+  // ici important, en fonction de ce qui est écris dans le readme,
+  // des termes nouveaux peuvent s'y retrouver et fausser les compteurs
+  // bien vérifier avec un
+  // console.log(updatedFoundedStack);
+  // pour voir si les compteurs correspondent
 };
 
 //function permettant de faire défiler les différent éléments
 
-const inOut = (resultat) => {
-  const keySpan = annecdoteSpans[0];
-  const annecdoteSpan = annecdoteSpans[1];
+const inOut = (foundedStack) => {
+  const firstSpan = annecdoteSpans[0];
+  const secondSpan = annecdoteSpans[1];
 
-  if (keys[index] !== "café.png" && keys[index] !== "clavier.png") {
-    annecdoteImg.src = `assets/technos/${keys[index]}`;
-    annecdoteSpan.innerText = Object.values(resultat)[index];
+  if (
+    stackImages[stackIndex] !== "café.png" &&
+    stackImages[stackIndex] !== "clavier.png"
+  ) {
+    // on exclu café et clavier car ils n'ont pas de contenu pour le firstSpan
 
-    if (Object.values(keys[index], resultat)[index] > 1) {
-      annecdoteSpan.innerText = "x";
+    annecdoteImg.src = `assets/technos/${Object.keys(foundedStack)[
+      stackIndex
+    ].trim()}.png`;
+
+    secondSpan.innerText = Object.values(foundedStack)[stackIndex];
+
+    if (Object.values(stackImages[stackIndex], foundedStack)[stackIndex] > 0) {
+      secondSpan.innerText = "x";
     } else {
-      keySpan.innerText = "x";
+      firstSpan.innerText = "x";
     }
-  } else if (keys[index] === "café.png") {
-    annecdoteImg.src = `assets/technos/${keys[index]}`;
-    keySpan.innerText = "too ";
-    annecdoteSpan.innerText = "much";
+  } else if (stackImages[stackIndex] === "café.png") {
+    // too vient remplacer * pour le café
+
+    annecdoteImg.src = `assets/technos/${stackImages[stackIndex]}`;
+    firstSpan.innerText = "too ";
+    secondSpan.innerText = "much";
   } else {
-    annecdoteImg.src = `assets/technos/${keys[index]}`;
-    keySpan.innerText = "52.2mpm";
-    annecdoteSpan.innerText = "94.2%";
+    // idem ici, du texte remplace *
+    annecdoteImg.src = `assets/technos/${stackImages[stackIndex]}`;
+    firstSpan.innerText = "52.2mpm";
+    secondSpan.innerText = "94.2%";
   }
 
-  index++;
+  stackIndex++;
 
-  if (index >= keys.length) {
-    index = 0;
+  if (stackIndex >= stackImages.length) {
+    stackIndex = 0;
   }
 };
 
 setTimeout(() => {
-  annecdoteContainer.classList.add("active");
-  inOut(updatedFoundedStack);
+  annecdoteContainer.classList.add("active"); // effet d'apparition au chargement du site
+  inOut(updatedFoundedStack); // permet d'avoir du contenu pendant son apparition
 
   setInterval(() => {
-    inOut(updatedFoundedStack);
+    inOut(updatedFoundedStack); // permet de faire défiler le contenu après son apparition
   }, 4000);
 }, 2000);
 
-const filterKeys = (obj, keywords) => {
+const filterKeys = (stackToKeep, stackToRemove) => {
   const filteredObj = {};
-  for (const key in obj) {
-    if (!keywords.includes(key.trim())) {
-      filteredObj[key] = obj[key];
+
+  for (const key in stackToKeep) {
+    if (!stackToRemove.includes(key.trim())) {
+      // si la stack ne fait pas partie de la liste des mots
+      // à retirer alors je la garde
+      filteredObj[key] = stackToKeep[key];
     }
   }
   return filteredObj;
@@ -349,7 +378,6 @@ const filterKeys = (obj, keywords) => {
 //-- parallax animations
 
 const profileImage = document.querySelector(".profile-image");
-const parcoursTitle = document.querySelector("#parcours > h2");
 
 const parallaxScroll = () => {
   const scrolled = window.pageYOffset;
