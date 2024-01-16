@@ -764,18 +764,11 @@ main article > h2::after {
 	margin: 8vw 2vw 0 2vw;
 }
 
-.css-container,
-.javascript-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
-
 .css-container::before,
-.javascript-container::before {
+.javascript-container::before,
+.node-js-container::before {
 	position: absolute;
-	top: 120%;
+	top: 110%;
 	left: 50%;
 	transform: translate(-50%, 0) scaleY(0);
 
@@ -793,7 +786,8 @@ main article > h2::after {
 	transition: transform ease 0.5s;
 }
 .css-container.active::before,
-.javascript-container.active::before {
+.javascript-container.active::before,
+.node-js-container.active::before {
 	transform: translate(-50%, 0) scaleY(1);
 }
 
@@ -853,13 +847,14 @@ main article > h2::after {
 	}
 }
 
-/*-- animation scroll  ----------------*/
+/*-------------- animation apparition  ----------------*/
 
 .tech-logo-container:not(
 		.tailwind-container,
 		.react-container,
 		.gsap-container,
-		.github-container
+		.github-container,
+		.express-container
 	) {
 	transform: translateX(-50%);
 	opacity: 0;
@@ -870,7 +865,8 @@ main article > h2::after {
 		.tailwind-container,
 		.react-container,
 		.gsap-container,
-		.github-container
+		.github-container,
+		.express-container
 	) {
 	transform: none;
 	opacity: 1;
@@ -879,7 +875,8 @@ main article > h2::after {
 .tailwind-container,
 .react-container,
 .gsap-container,
-.github-container {
+.github-container,
+.express-container {
 	transform: translateY(-100%);
 	opacity: 0;
 	transition: transform 0.5s, opacity 0.5s;
@@ -888,7 +885,8 @@ main article > h2::after {
 .tailwind-container.active,
 .react-container.active,
 .gsap-container.active,
-.github-container.active {
+.github-container.active,
+.express-container.active {
 	transform: none;
 	opacity: 1;
 	transition: transform 0.5s, opacity 0.5s;
@@ -905,6 +903,18 @@ main article > h2::after {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+
+	margin: 10% 0;
+}
+.projet-container > h3 {
+	border-radius: 0.5vw;
+	letter-spacing: 4px;
+	text-decoration: underline;
+	text-underline-offset: 0.8em;
+
+	border: 2px solid var(--orangeRed);
+
+	padding: 2% 1%;
 }
 .project {
 	text-align: center;
@@ -1001,19 +1011,25 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 
 .footer-global-container {
 	position: relative;
+
+	padding: 3% 0;
+
+	width: 100%;
+
+	background: #12244a;
+
+	font-size: clamp(1rem, 0.8vw, 2rem);
+}
+.footer-global-container > div {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: wrap;
-	padding: 1vw 0;
-	width: 100%;
-	background: #12244a;
-	font-size: clamp(1rem, 0.8vw, 2rem);
+
+	margin-bottom: 4%;
 }
 .contact-container {
-	min-width: 220px;
 	width: fit-content;
-	cursor: pointer;
 }
 
 .social-link-logo {
@@ -1022,10 +1038,7 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	margin: 1vw;
 }
 .author {
-	position: absolute;
-	bottom: 10%;
-	left: 50%;
-	transform: translateX(-50%);
+	text-align: center;
 }
 
 /*---------------- annecdote animation ----------------*/
@@ -1035,8 +1048,10 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	top: 2.5%;
 	right: 2.5%;
 	z-index: 1;
+
 	width: 15vw;
 	height: 4vw;
+
 	min-width: 100px;
 	min-height: 40px;
 
@@ -1055,7 +1070,7 @@ la seconde prend opacity 1, puis opacity 0 et la troisième prend opacity 1
 	transform: translateY(-100%);
 	opacity: 0;
 
-	animation: apparition 0.9s 2s ease forwards;
+	animation: apparition 0.5s 2s ease forwards;
 }
 
 .annecdote-container {

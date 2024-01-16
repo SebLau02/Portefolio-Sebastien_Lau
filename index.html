@@ -104,8 +104,6 @@
 					<img
 						src="assets/profile/Sebastien-removed.png"
 						alt="photo de sebastien"
-						height=""
-						width="25vw"
 						class="profile-image"
 					/>
 				</div>
@@ -174,8 +172,6 @@
 						src="assets/cv/CV_LAU_Sébastien.jpg"
 						alt="lau sebastien"
 						class="cv-img"
-						height=""
-						width="13vw"
 					/>
 					<a
 						href="assets/cv/CV_LAU_Sébastien.pdf"
@@ -190,55 +186,61 @@
 				<h2 id="view-project">Mes <span>travaux</span></h2>
 
 				<div class="projet-container">
-					<div class="project">
+					<h3>Front-End</h3>
+
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
+					<div class="project front-end-project">
+						<a target="_blank" href="" class="project-link"></a>
+						<h3 class="project-name"></h3>
+						<p class="project-description"></p>
+					</div>
+				</div>
+
+				<div class="projet-container">
+					<h3>Back-end</h3>
+
+					<div class="project back-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
 					</div>
 
-					<div class="project">
-						<a target="_blank" href="" class="project-link"></a>
-						<h3 class="project-name"></h3>
-						<p class="project-description"></p>
-					</div>
-
-					<div class="project">
+					<div class="project back-end-project">
 						<a target="_blank" href="" class="project-link"></a>
 						<h3 class="project-name"></h3>
 						<p class="project-description"></p>
@@ -247,6 +249,8 @@
 			</article>
 
 			<article class="technos-global-container" id="tech">
+				<!-- Attention: ajouter une nouvelle stack décalle bcp de chose, penser à vérifier: le css et le js -->
+
 				<h2>Stack</h2>
 
 				<section class="technos-parts front-end">
@@ -257,8 +261,6 @@
 							src="assets/technos/html.png"
 							alt="logo html"
 							class="html-logo logos"
-							height="5vw"
-							width=""
 						/>
 						<h5 class="tech-name">HTML</h5>
 					</div>
@@ -269,8 +271,6 @@
 								src="assets/technos/css.png"
 								alt="logo css"
 								class="css-logo logos"
-								height="5vw"
-								width=""
 							/>
 							<h5 class="tech-name">CSS</h5>
 						</div>
@@ -281,8 +281,6 @@
 								src="assets/technos/tailwindcss.png"
 								alt="logo tailwind"
 								class="tailwind-logo logos"
-								height="5vw"
-								width=""
 							/>
 							<h5 class="tech-name">Tailwindcss</h5>
 						</div>
@@ -294,8 +292,6 @@
 								src="assets/technos/js.png"
 								alt="logo javascript"
 								class="javascript-logo logos"
-								height="5vw"
-								width=""
 							/>
 							<h5 class="tech-name">JavaScript</h5>
 						</div>
@@ -306,8 +302,6 @@
 								src="assets/technos/react.js.png"
 								alt="logo react"
 								class="react-logo logos"
-								height="5vw"
-								width=""
 							/>
 							<h5 class="tech-name">React Js</h5>
 						</div>
@@ -316,8 +310,6 @@
 								src="assets/technos/greensock.png"
 								alt="logo gsap"
 								class="gsap-logo logos"
-								height="5vw"
-								width=""
 							/>
 							<h5 class="tech-name">GreenSock</h5>
 						</div>
@@ -327,27 +319,36 @@
 				<section class="technos-parts backend">
 					<h3>Back-end</h3>
 
-					<div class="node-js-container tech-logo-container">
-						<h4>Language serveur</h4>
+					<div class="tech-framework-container">
+						<div class="node-js-container tech-logo-container">
+							<h4>Language serveur</h4>
 
-						<img
-							src="assets/technos/node.js.png"
-							alt="logo node js"
-							class="nodejs-logo logos"
-							height="5vw"
-							width=""
-						/>
-						<h5 class="tech-name">Node Js</h5>
+							<img
+								src="assets/technos/node.js.png"
+								alt="logo node js"
+								class="nodejs-logo logos"
+							/>
+							<h5 class="tech-name">Node Js</h5>
+						</div>
+
+						<div class="express-container tech-logo-container">
+							<h4>Framework</h4>
+
+							<img
+								src="assets/technos/express.png"
+								alt="logo express js"
+								class="express-logo logos"
+							/>
+							<h5 class="tech-name">Express Js</h5>
+						</div>
 					</div>
 
 					<div class="mongodb-container tech-logo-container">
 						<h4>Base de données</h4>
 						<img
-							src="assets/technos/mongo.png"
+							src="assets/technos/mongodb.png"
 							alt="logo mongodb"
 							class="mongo-logo logos"
-							height="5vw"
-							width=""
 						/>
 						<h5 class="tech-name">Mongodb</h5>
 					</div>
@@ -363,8 +364,6 @@
 								src="assets/technos/git.png"
 								alt="git logo"
 								class="git-logo logos"
-								height="5vw"
-								width=""
 							/>
 
 							<h5 class="tech-name">Git</h5>
@@ -375,8 +374,6 @@
 								src="assets/technos/github.png"
 								alt="github logo"
 								class="github-logo logos"
-								height="5vw"
-								width=""
 							/>
 
 							<h5 class="tech-name">Github</h5>
@@ -390,8 +387,6 @@
 							src="assets/technos/sublime.png"
 							alt="sublime text logo"
 							class="sublime-logo logos"
-							height="5vw"
-							width=""
 						/>
 
 						<h5 class="tech-name">Sublime-Text</h5>
@@ -404,8 +399,6 @@
 							src="assets/technos/figma.png"
 							alt="figma logo"
 							class="figma-logo logos"
-							height="5vw"
-							width=""
 						/>
 
 						<h5 class="tech-name">Figma</h5>
@@ -415,38 +408,39 @@
 		</main>
 
 		<footer class="footer-global-container" id="contact">
-			<section class="contact-container">
-				<h4>Contact:</h4>
-				<div class="contact">
-					<p>📧 sebastien.lau2021@gmail.com</p>
-					<p>📪 24 rue des charmes, Agny, 62217</p>
-				</div>
-			</section>
+			<div>
+				<article class="contact-container">
+					<h4>Contact:</h4>
+					<div class="contact">
+						<p>📧 sebastien.lau2021@gmail.com</p>
+						<p>📪 24 rue des charmes, Agny, 62217</p>
+					</div>
+				</article>
 
-			<section class="social">
-				<a
-					href="https://github.com/SebLau02"
-					class="github-link"
-					target="_blank"
-				>
-					<img
-						src="assets/technos/github.png"
-						alt="logo github"
-						class="social-link-logo"
-				/></a>
+				<article class="social">
+					<a
+						href="https://github.com/SebLau02"
+						class="github-link"
+						target="_blank"
+					>
+						<img
+							src="assets/technos/github.png"
+							alt="logo github"
+							class="social-link-logo"
+					/></a>
 
-				<a
-					href="https://codepen.io/SebLau02"
-					class="codepen-link"
-					target="_blank"
-				>
-					<img
-						src="assets/technos/codepen.png"
-						alt="logo codepen"
-						class="social-link-logo"
-				/></a>
-			</section>
-
+					<a
+						href="https://codepen.io/SebLau02"
+						class="codepen-link"
+						target="_blank"
+					>
+						<img
+							src="assets/technos/codepen.png"
+							alt="logo codepen"
+							class="social-link-logo"
+					/></a>
+				</article>
+			</div>
 			<h4 class="author">© Sébastien LAU 2023</h4>
 		</footer>
 		<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>

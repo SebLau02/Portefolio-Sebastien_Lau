@@ -7,7 +7,6 @@ const workList = document.querySelector(".work-list");
 const cv = document.querySelector(".cv-container");
 const techLogoContainer = document.querySelectorAll(".tech-logo-container");
 const techParts = document.querySelectorAll(".technos-parts");
-const projectContainer = document.querySelector(".projets-section");
 const project = document.querySelectorAll(".project");
 const annecdoteContainer = document.querySelector(".annecdote-container");
 const annecdoteImg = document.querySelector(".annecdote-img");
@@ -66,6 +65,9 @@ function backHandleScroll() {
     setTimeout(() => {
       techLogoContainer[7].classList.add("active");
     }, 200);
+    setTimeout(() => {
+      techLogoContainer[8].classList.add("active");
+    }, 400);
   }
 }
 
@@ -75,16 +77,16 @@ function outilsHandleScroll() {
   const topElementToTopViewport = techParts[2].getBoundingClientRect().top;
 
   if (topElementToTopViewport - clientHeight * 0.8 <= 0) {
-    techLogoContainer[8].classList.add("active");
-    setTimeout(() => {
-      techLogoContainer[9].classList.add("active");
-    }, 200);
+    techLogoContainer[9].classList.add("active");
     setTimeout(() => {
       techLogoContainer[10].classList.add("active");
+    }, 200);
+    setTimeout(() => {
+      techLogoContainer[11].classList.add("active");
     }, 400);
 
     setTimeout(() => {
-      techLogoContainer[11].classList.add("active");
+      techLogoContainer[12].classList.add("active");
     }, 600);
   }
 }
@@ -118,21 +120,24 @@ window.addEventListener("scroll", () => {
 //le but ici est de récupérer des projets que j'ai réalisé, depuis mon github
 //je récupère le readme de chaque projet qui contienent une description, des images, le nom du projet, le lien pour accéder au site.
 
-const projectLink = document.querySelectorAll(".project-link");
-const projectImage = document.querySelectorAll(".project-image");
-const projectName = document.querySelectorAll(".project-name");
-const projectDescription = document.querySelectorAll(".project-description");
+const frontendProjectContainer =
+  document.querySelectorAll(".front-end-project");
+const backendProjectContainer = document.querySelectorAll(".back-end-project");
 
-let readMe = [];
-let i = 0;
+let frondEndIndex = 0;
 
 const findURL = (text, i) => {
   const urlRegex = /laisse le découvrir \[ici\]\((https:\/\/[^\s)]+)\)/;
   const matchedUrl = text.match(urlRegex);
-  projectLink[i].href = matchedUrl[1];
+
+  const link = frontendProjectContainer[i].children[0];
+
+  if (matchedUrl && matchedUrl[1]) {
+    link.href = matchedUrl[1];
+  }
 };
 
-const findImagesPath = (text, name, i) => {
+const findImagesPath = (text, name, i, side) => {
   const imagePathRegex = /src="([^"]+)" alt="/g;
   const paths = [];
   const images = [];
@@ -149,9 +154,15 @@ const findImagesPath = (text, name, i) => {
 
         const img = document.createElement("img");
         img.classList.add("project-image");
-        img.alt = "image vers projet";
+        img.alt = `projet ${name}`;
         img.src = data.download_url;
-        projectLink[i].appendChild(img);
+
+        const link =
+          side === "frontend"
+            ? frontendProjectContainer[i].children[0]
+            : backendProjectContainer[i].children[0];
+
+        link.appendChild(img);
       })
       .catch((error) => {
         console.log(error);
@@ -163,70 +174,127 @@ const findImagesPath = (text, name, i) => {
 
 //********** trouver la description du projet dans le readme **********
 
-function findDescription(text) {
+function findDescription(text, i, side) {
   const descriptionRegex = /### Description([\s\S]*?)### Détails/;
 
   const match = text.match(descriptionRegex);
 
+  const descriptionSection =
+    side === "frontend"
+      ? frontendProjectContainer[i].children[2]
+      : backendProjectContainer[i].children[2];
+
   if (match && match[1]) {
-    projectDescription[i].innerText = match[1].trim();
+    descriptionSection.innerText = match[1].trim();
   }
   return "";
 }
 
 // pour ajouter une nouveau projet:
-// - ajouter le nom du repos ci-dessous
-// - ajouter une nouvelle section project dans index.html
+// - ajouter le nom du repos dans la catégorie correspondante
+// - ajouter une nouvelle section project dans index.html dans la section correspondante
 // - ne pas oublier de bien écrire le readme et d'ajouter des images  d'illustratuion
 
 // Ce projet est en attente :
 
-const repositoryName = [
+const backEndProjectName = ["l-ardillon-shop-back", "miam-server"];
+
+const frontEndProjectName = [
   "l-ardillon-shop",
   "Pokedex-React",
   "Miam",
   "Check-weather",
   "Travel-Agency",
   "scrolltrigger",
-  "Cocacola-Animation",
-  "Memory",
   "credit-card-checkout",
 ];
-
 //---------------------------------------------
 
-//********** récupérer les readme de mes projets sur mon github **********
+//********** récupérer les readme depuis mon GH, trouver les infos souhaité puis les afficher dans le DOM **********
 
-for (const name of repositoryName) {
+// les projets frontend dans la partie dédié
+
+frontEndProjectName.forEach((name, index) => {
+  fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+
+      //---------------------------------------------
+      //********** trouver l'url du projet **********
+
+      findURL(data, index);
+
+      //---------------------------------------------
+
+      //********** ajoute le nom du projet dans les projets frontend **********
+
+      const title = frontendProjectContainer[index].children[1];
+
+      title.innerText = name.charAt(0).toUpperCase() + name.slice(1);
+
+      //---------------------------------------------
+
+      //********** trouver les images d'illustration **********
+
+      findImagesPath(data, name, index, "frontend");
+
+      //---------------------------------------------
+
+      //********** trouver la description de chaque projet **********
+
+      findDescription(data, index, "frontend");
+
+      //********** trouver les technos utilisées dans les projets ci-dessus **********
+
+      findStack(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+// et les projets backend dans sa partie
+
+backEndProjectName.forEach((name, index) => {
   fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
     .then((response) => response.text())
     .then((data) => {
       // console.log(data);
 
-      //********** push data to readme array **********
-      readMe.push(data);
+      //---------------------------------------------
+      //********** trouver l'url du projet **********
 
-      //********** find project url in readme data and put image url in html **********
+      const link = backendProjectContainer[index].children[0];
 
-      findURL(data, i);
+      link.href = `https://github.com/SebLau02/${name}`;
 
-      //********** put project name in html **********
-      projectName[i].innerText = name.charAt(0).toUpperCase() + name.slice(1);
+      //---------------------------------------------
 
-      //********** find repos images and put image in html**********
-      findImagesPath(data, name, i);
+      //********** ajoute le nom du projet les projets backend **********
 
-      //********** find description text **********
-      findDescription(data, i);
+      const title = backendProjectContainer[index].children[1];
+
+      title.innerText = name.charAt(0).toUpperCase() + name.slice(1);
+
+      //---------------------------------------------
+
+      //********** trouver les images d'illustration **********
+
+      findImagesPath(data, name, index, "backend");
+
+      //---------------------------------------------
+
+      //********** trouver les technos utilisées dans les projets ci-dessus **********
+
+      findDescription(data, index, "backend");
 
       findStack(data);
-
-      i++;
     })
     .catch((error) => {
-      console.error(error);
+      console.log(error);
     });
-}
+});
 
 //---------------------------------------------
 
@@ -247,10 +315,14 @@ burgerMenu.addEventListener("click", () => {
 
 //********** annecdote section animation **********
 
-let foundedStack = []; // toutes les technos utilisées dans les projets (temporaire)
+// pour ajouter une nouvelle animation pour la stac
+// il faut ajouter le nom de son image dans la liste ci-dessous
+
 const stackImages = [
   "react.png",
   "nodejs.png",
+  "express.png",
+  "mongodb.png",
   "gsap.svg",
   "tailwind.png",
   "café.png",
@@ -258,13 +330,14 @@ const stackImages = [
 ]; //nom de mes images d'illustrations
 
 let stackIndex = 0;
+let foundedStack = []; // toutes les technos utilisées dans les projets (temporaire)
 let reducedFoundedStack = {}; // toutes les technos utilisées dans les projets (temporaire)
 let updatedFoundedStack = {}; // toutes les technos utilisées dans les projets (définitif)
 
 const findStack = (text) => {
   // je récupère les différentes technos que j'ai utilisé depuis mon GH
 
-  const regex = /(?<=Technologies:)(.*?)(?=\n\n###|\nImages)/gs;
+  const regex = /(?<=Technologies:)(.*?)(?=\n\n###|\nImages|$)/gs;
 
   const matchedStack = text.match(regex);
 
@@ -318,7 +391,7 @@ const inOut = (foundedStack) => {
     stackImages[stackIndex] !== "café.png" &&
     stackImages[stackIndex] !== "clavier.png"
   ) {
-    // on exclu café et clavier car ils n'ont pas de contenu pour le firstSpan
+    // on exclu café et clavier car leurs contenu firstSpan est différent
 
     annecdoteImg.src = `assets/technos/${Object.keys(foundedStack)[
       stackIndex
@@ -351,15 +424,6 @@ const inOut = (foundedStack) => {
   }
 };
 
-setTimeout(() => {
-  annecdoteContainer.classList.add("active"); // effet d'apparition au chargement du site
-  inOut(updatedFoundedStack); // permet d'avoir du contenu pendant son apparition
-
-  setInterval(() => {
-    inOut(updatedFoundedStack); // permet de faire défiler le contenu après son apparition
-  }, 4000);
-}, 2000);
-
 const filterKeys = (stackToKeep, stackToRemove) => {
   const filteredObj = {};
 
@@ -372,6 +436,14 @@ const filterKeys = (stackToKeep, stackToRemove) => {
   }
   return filteredObj;
 };
+
+setTimeout(() => {
+  inOut(updatedFoundedStack); // permet d'avoir du contenu pendant son apparition
+
+  setInterval(() => {
+    inOut(updatedFoundedStack); // permet de faire défiler le contenu après son apparition
+  }, 4000);
+}, 2000);
 
 //---------------------------------------------
 
