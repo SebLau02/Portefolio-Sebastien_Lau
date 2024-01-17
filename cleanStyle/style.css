@@ -927,6 +927,62 @@ main article > h2::after {
 	transform: none;
 	opacity: 1;
 }
+
+/*---------------- hover me effect ----------------*/
+
+.front-end-project:first-of-type.hover-me {
+	position: relative;
+}
+.front-end-project:first-of-type::before {
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	z-index: 5;
+	transform: translateX(25px);
+
+	width: 20%;
+	height: 20%;
+	content: "";
+
+	opacity: 0;
+
+	background-image: url("../assets/images/mouse.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+.front-end-project.hover-me:first-of-type::before {
+	animation: hoverMe 4s 1s ease forwards;
+}
+
+@keyframes hoverMe {
+	0% {
+		transform: rotate(0deg) translateX(25px) rotate(0deg);
+	}
+	5% {
+		opacity: 1;
+	}
+
+	33% {
+		transform: rotate(360deg) translateX(25px) rotate(-360deg);
+		opacity: 1;
+	}
+
+	66% {
+		transform: rotate(720deg) translateX(25px) rotate(-720deg);
+		opacity: 1;
+	}
+	71% {
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(720deg) translateX(25px) rotate(-720deg);
+		opacity: 0;
+	}
+}
+
+/* --------------------------------- */
+
 .project-link {
 	position: relative;
 

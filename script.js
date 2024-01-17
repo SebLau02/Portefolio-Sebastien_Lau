@@ -99,19 +99,27 @@ function projectHandleScroll() {
 
     if (topElementToTopViewport - clientHeight * 0.6 <= 0) {
       project[i].classList.add("active");
+
+      if (i === 0) {
+        project[i].classList.add("hover-me");
+      }
     }
   }
 }
 
+// Pour ajouter des fonctionnalités supplémentaires sans supprimer handleScroll
 window.addEventListener("scroll", () => {
+  parallaxScroll();
+  hiddenNavFunc();
+
   parcoursHandleScroll();
-  projectHandleScroll();
+
   frontHandleScroll();
   backHandleScroll();
   outilsHandleScroll();
-  parallaxScroll();
-  hiddenNavFunc();
 });
+
+window.addEventListener("scroll", projectHandleScroll);
 
 //---------------------------------------------
 
@@ -218,7 +226,7 @@ frontEndProjectName.forEach((name, index) => {
   fetch(`https://raw.githubusercontent.com/SebLau02/${name}/main/README.md`)
     .then((response) => response.text())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       //---------------------------------------------
       //********** trouver l'url du projet **********
