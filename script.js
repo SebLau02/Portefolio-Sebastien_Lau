@@ -110,13 +110,16 @@ function projectHandleScroll() {
 // Pour ajouter des fonctionnalités supplémentaires sans supprimer handleScroll
 window.addEventListener("scroll", () => {
   parallaxScroll();
-  hiddenNavFunc();
 
   parcoursHandleScroll();
 
   frontHandleScroll();
   backHandleScroll();
   outilsHandleScroll();
+
+  if (window.innerWidth > 425) {
+    hiddenNavFunc();
+  }
 });
 
 window.addEventListener("scroll", projectHandleScroll);
