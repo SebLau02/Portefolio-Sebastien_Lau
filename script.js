@@ -28,6 +28,8 @@ function parcoursHandleScroll() {
   if (topElementToTopViewport - clientHeight * 0 <= 0) {
     cv.classList.add("active");
   }
+
+  window.removeEventListener("scroll", parcoursHandleScroll);
 }
 
 //********** callback sur écoute au scroll sur la partie stack frontend pour appliquer des animations **********
@@ -53,6 +55,8 @@ function frontHandleScroll() {
       techLogoContainer[5].classList.add("active");
     }, 1000);
   }
+
+  window.removeEventListener("scroll", frontendProjectContainer);
 }
 
 //********** callback sur écoute au scroll sur la partie stack backend pour appliquer des animations **********
@@ -69,6 +73,8 @@ function backHandleScroll() {
       techLogoContainer[8].classList.add("active");
     }, 400);
   }
+
+  window.removeEventListener("scroll", backendProjectContainer);
 }
 
 //********** callback sur écoute au scroll sur la partie stack outils pour appliquer des animations **********
@@ -89,6 +95,8 @@ function outilsHandleScroll() {
       techLogoContainer[12].classList.add("active");
     }, 600);
   }
+
+  window.removeEventListener("scroll", outilsHandleScroll);
 }
 
 //********** callback sur écoute au scroll sur la partie travaux pour appliquer des animations **********
@@ -105,6 +113,8 @@ function projectHandleScroll() {
       }
     }
   }
+
+  window.removeEventListener("scroll", projectHandleScroll);
 }
 
 // Pour ajouter des fonctionnalités supplémentaires sans supprimer handleScroll
@@ -112,7 +122,7 @@ window.addEventListener("scroll", () => {
   parallaxScroll();
 
   parcoursHandleScroll();
-
+  projectHandleScroll();
   frontHandleScroll();
   backHandleScroll();
   outilsHandleScroll();
@@ -121,8 +131,6 @@ window.addEventListener("scroll", () => {
     hiddenNavFunc();
   }
 });
-
-window.addEventListener("scroll", projectHandleScroll);
 
 //---------------------------------------------
 
@@ -149,15 +157,16 @@ const findURL = (text, i) => {
 };
 
 const findImagesPath = (text, name, i, side) => {
-  const imagePathRegex = /src="([^"]+)" alt="/g;
-  const paths = [];
-  const images = [];
+  const imagePathRegex = /<img\s+src="([^"]+)"/g;
 
-  for (const matchedImages of text.matchAll(imagePathRegex)) {
-    paths.push(matchedImages[1]);
+  const matches = text.match(imagePathRegex);
+  const paths = matches
+    ? matches.map((match) => match.match(/src="([^"]+)"/)[1])
+    : [];
 
+  for (const matchedImages of paths) {
     fetch(
-      `https://api.github.com/repos/seblau02/${name}/contents/${matchedImages[1]}`,
+      `https://api.github.com/repos/seblau02/${name}/contents/${matchedImages}`,
     )
       .then((response) => response.json())
       .then((data) => {
@@ -448,13 +457,19 @@ const filterKeys = (stackToKeep, stackToRemove) => {
   return filteredObj;
 };
 
-setTimeout(() => {
-  inOut(updatedFoundedStack); // permet d'avoir du contenu pendant son apparition
+const annecdoteAnimationFunc = () => {
+  setTimeout(() => {
+    inOut(updatedFoundedStack); // permet d'avoir du contenu pendant son apparition
 
-  setInterval(() => {
-    inOut(updatedFoundedStack); // permet de faire défiler le contenu après son apparition
-  }, 4000);
-}, 2000);
+    setInterval(() => {
+      inOut(updatedFoundedStack); // permet de faire défiler le contenu après son apparition
+    }, 4000);
+  }, 2000);
+
+  window.removeEventListener("DOMContentLoaded", annecdoteAnimationFunc);
+};
+
+window.addEventListener("DOMContentLoaded", annecdoteAnimationFunc);
 
 //---------------------------------------------
 
